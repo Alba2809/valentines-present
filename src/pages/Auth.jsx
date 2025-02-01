@@ -4,7 +4,9 @@ import ThemeToggle from "../components/ThemeToggle";
 import AnimatedFace from "../components/AnimatedFace";
 import InputLetter from "../components/InputLetter";
 import passwordsData from "../data/passwords.json";
+import MessageTimer from "../components/MessageTimer";
 import "../components/styles/Arrow.css";
+import { useNavigate } from "react-router-dom";
 
 function Auth() {
   const [attempts, setAttempts] = useState(0);
@@ -15,6 +17,7 @@ function Auth() {
   const formRef = useRef(null);
   const [showLeftIndicator, setShowLeftIndicator] = useState(false);
   const [showRightIndicator, setShowRightIndicator] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const form = formRef.current;
@@ -44,11 +47,27 @@ function Auth() {
     };
   }, [correctPassword]); // Dependencia para recalcular cuando cambia la contraseña
 
+  const handleScrollLeft = () => {
+    // scroll to the left just a little bit
+    formRef.current.scrollBy({
+      left: -50,
+      behavior: "smooth",
+    });
+  };
+
+  const handleScrollRight = () => {
+    // scroll to the right just a little bit
+    formRef.current.scrollBy({
+      left: 50,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     const randomIndex = Math.floor(
       Math.random() * passwordsData.passwords.length
     );
-    setCorrectPassword(passwordsData.passwords[2]);
+    setCorrectPassword(passwordsData.passwords[randomIndex]);
   }, []);
 
   const verifyPassword = (password) => {
@@ -140,11 +159,18 @@ function Auth() {
     if (attempts > 0) resetInputs();
   }, [attempts]);
 
+  const handleFinish = () => {
+    localStorage.setItem("completedFlowerChallenge", "true");
+    navigate("/flower");
+  };
+
   return (
     <div className="min-h-screen bg-pink-100 dark:bg-gray-900 flex flex-col items-center justify-center p-4 relative overflow-hidden">
       <ThemeToggle />
       <Decorations />
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 max-w-md w-full relative z-10">
+      {/* make bg opacity a little bit transparent */}
+
+      <div className="bg-white/30 backdrop-blur-sm dark:backdrop-blur-sm dark:bg-gray-800/30 rounded-lg shadow-xl p-8 max-w-md w-full relative z-10">
         <h1 className="text-3xl font-bold text-red-600 dark:text-red-400 mb-6 text-center">
           {correctPassword?.messages.initial}
         </h1>
@@ -174,12 +200,12 @@ function Auth() {
                 )}
               </Fragment>
             ))}
-            {/* A pulse indicator to show when there is more content to the left or right */}
             {showLeftIndicator && (
               <div
                 className={`arrow absolute left-7 ${
                   showRightIndicator ? "bottom-[48px]" : "bottom-[64px]"
                 }`}
+                onClick={handleScrollLeft}
               >
                 <span></span>
                 <span></span>
@@ -187,7 +213,10 @@ function Auth() {
             )}
 
             {showRightIndicator && (
-              <div className="arrow absolute right-7 bottom-[64px] scale-x-[-1]">
+              <div
+                className="arrow absolute right-7 bottom-[64px] scale-x-[-1]"
+                onClick={handleScrollRight}
+              >
                 <span></span>
                 <span></span>
               </div>
@@ -195,6 +224,13 @@ function Auth() {
           </form>
         )}
       </div>
+      {isCorrect && (
+        <MessageTimer
+          message={"Preparando tu regalo..."}
+          time={5}
+          handleFinish={handleFinish}
+        />
+      )}
     </div>
   );
 }

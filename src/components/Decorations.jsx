@@ -14,12 +14,12 @@ function Decorations() {
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden">
-      <div className="absolute top-10 left-10 animate-bounce">
+      {/* <div className="absolute top-10 left-10 animate-bounce">
         <Daisy />
       </div>
       <div className="absolute bottom-10 right-10 animate-bounce">
         <Daisy />
-      </div>
+      </div> */}
       {hearts}
     </div>
   );
