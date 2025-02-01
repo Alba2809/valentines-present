@@ -1,0 +1,286 @@
+.emoji-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.emoji {
+  --skin: #f9d858;
+  --shade: rgb(254, 174, 78);
+  --detail: rgb(90, 70, 50);
+  --blushed: rgb(254, 174, 78);
+  --heart: rgb(254, 30, 20);
+  --emoji-transition: 1000ms;
+  --water: #5bd;
+  width: 100px;
+  height: 100px;
+  background: var(--shade);
+  position: relative;
+  border-radius: 100px;
+}
+
+.emoji,
+.emoji * {
+  transition: var(--emoji-transition);
+  position: absolute;
+  border-radius: 100px;
+}
+
+.skin {
+  background: var(--skin);
+  inset: 5px;
+  filter: blur(5px);
+}
+
+.eye {
+  width: 15px;
+  height: 15px;
+  background: var(--detail);
+  top: 30px;
+}
+
+.eye.l {
+  left: 25px;
+}
+
+.eye.r {
+  left: 60px;
+}
+
+.eye i {
+  background: transparent;
+  inset: 0;
+  transform: scale(1);
+}
+
+.eye i {
+  transform: scale(0.5);
+}
+
+.cheek {
+  width: 25px;
+  height: 25px;
+  background: var(--blushed);
+  top: 45px;
+  filter: blur(5px);
+}
+
+.cheek.l {
+  left: 5px;
+}
+
+.cheek.r {
+  left: 70px;
+}
+
+.mouth {
+  left: 25px;
+  right: 25px;
+  height: 20px;
+  bottom: 20px;
+  background: var(--detail);
+  border-bottom: 0px solid var(--detail);
+}
+
+.decor {
+  left: 40px;
+  top: 40px;
+  width: 20px;
+  height: 20px;
+}
+.decor i {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* Estilos específicos para cada emoji */
+.emoji.😐 {
+}
+.emoji.😐 .mouth {
+  bottom: 30px;
+  left: 20px;
+  right: 20px;
+  height: 7px;
+}
+.emoji.😐 .cheek {
+  opacity: 0.1;
+}
+.emoji.😐 .eye {
+  transform: scaleY(1.2) scaleX(0.8);
+}
+
+/* -------- */
+.email.🙂 {
+}
+.emoji.🙂 .mouth {
+  background: transparent;
+  border-bottom: 10px solid var(--detail);
+  height: 25px;
+  transform: scaleY(0.7);
+  bottom: 15px;
+  border-radius: 4px 0 40px 40px;
+}
+.emoji.🙂 .cheeks {
+  opacity: 0.5;
+}
+
+/* -------- */
+.emoji.🥲 {
+}
+.emoji.🥲 .eye {
+  transform: scaleY(1.2) scaleX(0.8);
+  top: 40px;
+}
+.emoji.🥲 .eye.l {
+  left: 28px;
+}
+.emoji.🥲 .eye.r {
+  left: 57px;
+}
+.emoji.🥲 .cheek {
+  opacity: 0.1;
+}
+.emoji.🥲 .mouth {
+  border-radius: 0px 0px 25px 25px;
+  height: 10px;
+  bottom: 15px;
+  left: 35px;
+  right: 35px;
+  background: transparent;
+  border-bottom: 8px solid var(--detail);
+}
+.emoji.🥲 .decor {
+  background: white;
+  transform: rotate(-45deg);
+  left: 20px;
+  top: 65px;
+  width: 20px;
+  height: 20px;
+  border-top-right-radius: 0;
+  box-shadow: 2px 2px 8px #00000066, 3px -3px 7px 3px var(--water) inset;
+}
+
+/* -------- */
+.emoji.😍 {
+}
+.emoji.😍 .mouth {
+  border-radius: 5px 5px 40px 40px;
+  height: 20px;
+  bottom: 15px;
+}
+.emoji.😍 .eye i {
+  margin-top: -10px;
+}
+.emoji.😍 .eye.l i {
+  margin-left: -5px;
+  transform: rotate(-15deg);
+  transform-origin: center;
+  width: 30px;
+  height: 30px;
+}
+.emoji.😍 .eye.r i {
+  margin-right: 5px;
+  transform: rotate(15deg);
+}
+.emoji.😍 .eye i::before,
+.emoji.😍 .eye i::after {
+  content: ""; /* Asegúrate de que los pseudo-elementos tengan contenido */
+  position: absolute; /* Posicionamiento absoluto para colocarlos correctamente */
+  border-radius: 10px 10px 5px 5px;
+  background: var(--heart);
+  width: 20px;
+  height: 30px;
+  transform-origin: center; /* Centro de transformación */
+}
+.emoji.😍 .eye i::after {
+  transform: rotate(45deg) translateX(5px);
+}
+.emoji.😍 .eye i::before {
+  transform: rotate(-45deg) translateX(-5px);
+}
+
+/* -------- */
+.emoji.🥰 {
+}
+.emoji.🥰 .eye {
+  top: 40px;
+  height: 15px;
+  width: 25px;
+  background: transparent;
+  border-top: 7px solid var(--detail);
+  border-radius: 20px 20px 0 0;
+}
+.emoji.🥰 .eye.l {
+  left: 20px;
+}
+.emoji.🥰 .eye.r {
+  right: 20px;
+}
+.emoji.🥰 .mouth {
+  background: transparent;
+  border-bottom: 10px solid var(--detail);
+  height: 15px;
+  border-radius: 0 0 30px 30px;
+  transform: (0.7);
+  bottom: 15px;
+  left: 35px;
+  right: 35px;
+}
+.emoji.🥰 .decor {
+  transform: rotate(-30deg);
+  left: 70px;
+  top: 80px;
+}
+.emoji.🥰 .decor,
+.emoji.🥰 .decor i {
+  margin-top: -10px;
+  border-radius: 10px 10px 5px 5px;
+  background: var(--heart);
+  width: 20px;
+  height: 30px;
+}
+.emoji.🥰 .decor i {
+  transform: rotate(90deg);
+  left: 5px;
+  top: 15px;
+}
+.emoji.🥰 .eye i {
+  margin-top: -10px;
+  scale: 0.9;
+}
+.emoji.🥰 .eye.l i {
+  margin-left: -20px;
+  margin-top: 10px;
+  transform: rotate(-15deg);
+  transform-origin: center;
+  width: 30px;
+  height: 30px;
+}
+.emoji.🥰 .eye.r i {
+  margin-left: 15px;
+  margin-top: -50px;
+  transform: rotate(15deg);
+  transform-origin: center;
+  width: 30px;
+  height: 30px;
+}
+.emoji.🥰 .eye i::before,
+.emoji.🥰 .eye i::after {
+  content: ""; /* Asegúrate de que los pseudo-elementos tengan contenido */
+  position: absolute; /* Posicionamiento absoluto para colocarlos correctamente */
+  width: 20px; /* Ancho del corazón */
+  height: 30px; /* Alto del corazón */
+  background: var(--heart); /* Color del corazón */
+  border-radius: 10px 10px 5px 5px; /* Bordes redondeados */
+  transform-origin: center; /* Centro de transformación */
+}
+
+.emoji.🥰 .eye i::before {
+  transform: rotate(-45deg) translateX(-5px);
+}
+
+.emoji.🥰 .eye i::after {
+  transform: rotate(45deg) translateX(5px);
+}
