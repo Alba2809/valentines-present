@@ -166,7 +166,6 @@ function Auth() {
 
   return (
     <div className="min-h-screen bg-pink-100 dark:bg-gray-900 flex flex-col items-center justify-center p-4 relative overflow-hidden">
-      <ThemeToggle />
       <Decorations />
       {/* make bg opacity a little bit transparent */}
 
@@ -226,7 +225,7 @@ function Auth() {
       </div>
       {isCorrect && (
         <MessageTimer
-          message={"Preparando tu regalo..."}
+          message={"Continuando con tu regalo..."}
           time={5}
           handleFinish={handleFinish}
         />

@@ -4,6 +4,7 @@
 
 @theme {
   --animate-float: float 3s ease-in-out infinite;
+  --animate-heart: heart 1s ease-in-out infinite;
 
   @keyframes float {
     0% {
@@ -17,5 +18,34 @@
       transform: translateY(-100px);
       opacity: 0;
     }
+  }
+
+  @keyframes heart {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+.heart {
+  --c: #fe1e14;
+
+  width: 200px;
+  aspect-ratio: 1;
+  background: radial-gradient(at 70% 31%, var(--c) 29%, #0000 30%),
+    radial-gradient(at 30% 31%, var(--c) 29%, #0000 30%),
+    conic-gradient(from -45deg at 50% 84%, var(--c) 90deg, #0000 0) bottom/100%
+      50% no-repeat;
+}
+
+@media (prefers-color-scheme: dark) {
+  .heart {
+    --c: #fd79a8;
   }
 }

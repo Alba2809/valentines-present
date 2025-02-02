@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import Loading from "../pages/Loading";
 
 function VerifyAuth() {
   const [verifingAuth, setVerifingAuth] = useState(true);
@@ -25,7 +26,7 @@ function VerifyAuth() {
   }, []);
 
   if (verifingAuth) {
-    return <div>Loading</div>;
+    return <Loading />;
   }
 
   return <Outlet />;

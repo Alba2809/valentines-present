@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 
 function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
@@ -20,13 +21,16 @@ function ThemeToggle() {
   };
 
   return (
+    <>
     <button
       onClick={toggleTheme}
-      className="fixed top-4 right-4 rounded-full bg-white/60 backdrop-blur-sm dark:bg-gray-800/90 dark:backdrop-blur-sm text-gray-800 dark:text-gray-200 size-12 flex items-center justify-center cursor-pointer shadow-2xl hover:bg-white hover:dark:bg-gray-700/90 transition-all duration-300 ease-in-out"
+      className="fixed top-4 right-4 rounded-full bg-white/60 backdrop-blur-sm dark:bg-gray-800/90 dark:backdrop-blur-sm text-gray-800 dark:text-gray-200 size-12 flex items-center justify-center cursor-pointer shadow hover:bg-white hover:dark:bg-gray-700/90 transition-all duration-300 ease-in-out"
       aria-label="Toggle theme"
     >
       {isDark ? <div className="text-3xl">🌼</div> : <div className="text-3xl">🏶</div>}
     </button>
+    <Outlet />
+    </>
   );
 }
 
