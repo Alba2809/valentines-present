@@ -1,10 +1,17 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Kissme";
+  src: url("./assets/fonts/Kiss Me Quick.ttf");
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --animate-float: float 3s ease-in-out infinite;
   --animate-heart: heart 1s ease-in-out infinite;
+  --font-kissme: "Kissme", "sans-serif";
+  --font-love: "Love Light", serif;
 
   @keyframes float {
     0% {

@@ -5,14 +5,25 @@ import "../components/styles/FlowerAnimated.css";
 function Flower() {
   const [canClick, setCanClick] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const clickWait = 7000;
+  const flowersInitialAnimation = 7000; /* Tiempo de espera para que el usuario vea la animacion growing */
+  const messageAnimationDurations = {
+    duration: 0.5,
+    delay: 10,  /* 3 segundos despues de la animacion inicial */
+  };
+  const fadeFlowersDurantions = { /* Animacion de fade de flores/pasto (al hacer click) */
+    duration: 3,
+  };
+  const flowerAnimationDurations = { /* Animacion de la flor principal, despues de hacer click */
+    duration: 2,
+    ease: "easeInOut",
+    delay: 3,  /* 3 segundos despues de que desaparezcan las flores/pasto */
+  };
   const controls = useAnimation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log("can click");
       setCanClick(true);
-    }, clickWait);
+    }, flowersInitialAnimation);
 
     return () => clearTimeout(timer);
   }, []);
@@ -28,15 +39,38 @@ function Flower() {
       controls.start({
         scale: 0.5,
         marginTop: -100,
-        transition: { duration: 2, ease: "easeInOut", delay: 3 },
+        transition: {
+          duration: flowerAnimationDurations.duration,
+          ease: flowerAnimationDurations.ease,
+          delay: flowerAnimationDurations.delay,
+        },
       });
     }
   }, [clicked, controls]);
 
   return (
     <div
-      className={`h-screen w-full bg-pink-100 dark:bg-gray-900 flex items-end justify-center overflow-hidden`}
+      className={`h-screen w-full bg-gray-900 flex items-end justify-center overflow-hidden`}
     >
+      <AnimatePresence>
+        {!clicked && (
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: {
+                duration: messageAnimationDurations.duration,
+                delay: messageAnimationDurations.delay,
+              },
+            }}
+            exit={{ opacity: 0 }}
+            className="text-gray-400 absolute top-5 left-1/2 transform -translate-x-1/2 font-love"
+            style={{ fontSize: "10vh" }}
+          >
+            Toca la flor
+          </motion.h1>
+        )}
+      </AnimatePresence>
       <div className="flowers" onClick={handleClick}>
         <motion.div animate={controls} className="relative">
           <div className="flower flower--1 z-10">
@@ -92,7 +126,7 @@ function Flower() {
             <>
               <motion.div
                 className="flower flower--2"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="flower__leafs flower__leafs--2">
                   <div className="flower__leaf flower__leaf--1"></div>
@@ -120,7 +154,7 @@ function Flower() {
 
               <motion.div
                 className="flower flower--3"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="flower__leafs flower__leafs--3">
                   <div className="flower__leaf flower__leaf--1"></div>
@@ -149,7 +183,7 @@ function Flower() {
               <motion.div
                 className="grow-ans"
                 style={{ "--d": "1.2s" }}
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="flower__g-long">
                   <div className="flower__g-long__top"></div>
@@ -159,7 +193,7 @@ function Flower() {
 
               <motion.div
                 className="growing-grass"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="flower__grass flower__grass--1">
                   <div className="flower__grass--top"></div>
@@ -178,7 +212,7 @@ function Flower() {
 
               <motion.div
                 className="growing-grass"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="flower__grass flower__grass--2">
                   <div className="flower__grass--top"></div>
@@ -198,7 +232,7 @@ function Flower() {
               <motion.div
                 className="grow-ans"
                 style={{ "--d": "2.4s" }}
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="flower__g-right flower__g-right--1">
                   <div className="leaf"></div>
@@ -208,7 +242,7 @@ function Flower() {
               <motion.div
                 className="grow-ans"
                 style={{ "--d": "2.8s" }}
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="flower__g-right flower__g-right--2">
                   <div className="leaf"></div>
@@ -218,7 +252,7 @@ function Flower() {
               <motion.div
                 className="grow-ans"
                 style={{ "--d": "2.8s" }}
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="flower__g-front">
                   <div className="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
@@ -252,7 +286,7 @@ function Flower() {
               <motion.div
                 className="grow-ans"
                 style={{ "--d": "3.2s" }}
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="flower__g-fr">
                   <div className="leaf"></div>
@@ -269,7 +303,7 @@ function Flower() {
 
               <motion.div
                 className="long-g long-g--0"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="grow-ans" style={{ "--d": "3s" }}>
                   <div className="leaf leaf--0"></div>
@@ -287,7 +321,7 @@ function Flower() {
 
               <motion.div
                 className="long-g long-g--1"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="grow-ans" style={{ "--d": "3.6s" }}>
                   <div className="leaf leaf--0"></div>
@@ -305,7 +339,7 @@ function Flower() {
 
               <motion.div
                 className="long-g long-g--2"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="grow-ans" style={{ "--d": "4s" }}>
                   <div className="leaf leaf--0"></div>
@@ -323,7 +357,7 @@ function Flower() {
 
               <motion.div
                 className="long-g long-g--3"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="grow-ans" style={{ "--d": "4s" }}>
                   <div className="leaf leaf--0"></div>
@@ -341,7 +375,7 @@ function Flower() {
 
               <motion.div
                 className="long-g long-g--4"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="grow-ans" style={{ "--d": "4s" }}>
                   <div className="leaf leaf--0"></div>
@@ -359,7 +393,7 @@ function Flower() {
 
               <motion.div
                 className="long-g long-g--5"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="grow-ans" style={{ "--d": "4s" }}>
                   <div className="leaf leaf--0"></div>
@@ -377,7 +411,7 @@ function Flower() {
 
               <motion.div
                 className="long-g long-g--6"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="grow-ans" style={{ "--d": "4.2s" }}>
                   <div className="leaf leaf--0"></div>
@@ -395,7 +429,7 @@ function Flower() {
 
               <motion.div
                 className="long-g long-g--7"
-                exit={{ opacity: 0, y: 100, transition: { duration: 3 } }}
+                exit={{ opacity: 0, y: 100, transition: { duration: fadeFlowersDurantions.duration } }}
               >
                 <div className="grow-ans" style={{ "--d": "3s" }}>
                   <div className="leaf leaf--0"></div>

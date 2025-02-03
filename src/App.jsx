@@ -9,13 +9,13 @@ function App() {
 
   return (
     <Routes location={location} key={location.pathname}>
-      <Route element={<ThemeToggle />}>
-        <Route element={<VerifyAuth />}>
+      <Route element={<VerifyAuth />}>
+        <Route element={<ThemeToggle />}>
           <Route path="/" element={<Auth />} />
-          <Route path="/flower" element={<Flower />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
+        <Route path="/flower" element={<Flower />} />
         {/* <Route path="/loading" element={<Loading />} /> */}
-        <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );
