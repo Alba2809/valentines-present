@@ -7,6 +7,15 @@
   cursor: pointer;
 }
 
+/* media when screen is 768px wide or less */
+@media (max-width: 768px) { /* Ajusta el valor según el tamaño que consideres móvil */
+  .arrow {
+    --border: 2px;
+    --width: 3vw;
+    --height: 3vw;
+  }
+}
+
 .arrow span {
   display: block;
   width: var(--width);

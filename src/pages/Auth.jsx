@@ -1,16 +1,17 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import Decorations from "../components/Decorations";
-import ThemeToggle from "../components/ThemeToggle";
+import Decorations from "../components/AuthPage/Decorations";
 import AnimatedFace from "../components/AnimatedFace";
-import InputLetter from "../components/InputLetter";
-import passwordsData from "../data/passwords.json";
-import MessageTimer from "../components/MessageTimer";
+import InputLetter from "../components/AuthPage/InputLetter";
+import { passwords } from "../data/passwords.json";
+import MessageTimer from "../components/AuthPage/MessageTimer";
 import "../components/styles/Arrow.css";
 import { useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from "motion/react";
+import MessageHelp from "../components/AuthPage/MessageHelp";
 
 function Auth() {
   const [attempts, setAttempts] = useState(0);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(null);
   const [isCorrect, setIsCorrect] = useState(false);
   const [letterToShow, setLetterToShow] = useState([]);
   const [correctPassword, setCorrectPassword] = useState(null);
@@ -64,10 +65,8 @@ function Auth() {
   };
 
   useEffect(() => {
-    const randomIndex = Math.floor(
-      Math.random() * passwordsData.passwords.length
-    );
-    setCorrectPassword(passwordsData.passwords[randomIndex]);
+    const randomIndex = Math.floor(Math.random() * passwords.length);
+    setCorrectPassword(passwords[2]);
   }, []);
 
   const verifyPassword = (password) => {
@@ -167,63 +166,81 @@ function Auth() {
   return (
     <div className="min-h-screen bg-pink-100 dark:bg-gray-900 flex flex-col items-center justify-center p-4 relative overflow-hidden">
       <Decorations />
-      {/* make bg opacity a little bit transparent */}
-
       <div className="bg-white/30 backdrop-blur-sm dark:backdrop-blur-sm dark:bg-gray-800/30 rounded-lg shadow-xl p-8 max-w-md w-full relative z-10">
-        <h1 className="text-3xl font-bold text-red-600 dark:text-red-400 mb-6 text-center">
+      <AnimatePresence mode="popLayout">
+        <motion.h1
+          className="text-red-600 dark:text-red-400 mb-6 text-center font-love font-bold text-4xl"
+          style={{ fontSize: "3.8vh" }}
+          layout
+        >
           {correctPassword?.messages.initial}
-        </h1>
-        <div>
-          <AnimatedFace attempts={attempts} isCorrect={isCorrect} />
-        </div>
-        <p className="text-lg text-center m-4 text-gray-800 dark:text-gray-200">
-          {message}
-        </p>
-        {!isCorrect && (
-          <form
-            ref={formRef}
-            className="space-y-4 flex gap-3 justify-around px-4 overflow-x-auto"
-            style={{ scrollBehavior: "smooth", scrollbarWidth: "none" }}
-          >
-            {correctPassword?.password.split("").map((letter, index) => (
-              <Fragment key={index}>
-                {letter === " " ? (
-                  <input className={`w-[25px] h-[40px]`} disabled />
-                ) : (
-                  <InputLetter
-                    correctLetter={letter}
-                    handleInput={handleInput}
-                    index={index}
-                    showAnswer={letterToShow.includes(index)}
-                  />
+        </motion.h1>
+          <motion.div key="face" className="mb-4" layout>
+            <AnimatedFace attempts={attempts} isCorrect={isCorrect} />
+          </motion.div>
+          {message && (
+            <motion.p
+              key="message"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 0.3 } }}
+              exit={{ opacity: 0 }}
+              className="text-center text-gray-800 dark:text-gray-200 font-montez"
+              style={{ fontSize: "2.8vh" }}
+              layout
+            >
+              {message}
+            </motion.p>
+          )}
+          {!isCorrect && (
+            <Fragment key="form">
+              <motion.form
+                ref={formRef}
+                className="mt-4 flex gap-3 justify-around px-4 overflow-x-auto font-hachi font-bold"
+                style={{ scrollBehavior: "smooth", scrollbarWidth: "none" }}
+                layout
+              >
+                {correctPassword?.password.split("").map((letter, index) => (
+                  <Fragment key={index}>
+                    {letter === " " ? (
+                      <input className={`w-[25px] h-[40px]`} disabled />
+                    ) : (
+                      <InputLetter
+                        correctLetter={letter}
+                        handleInput={handleInput}
+                        index={index}
+                        showAnswer={letterToShow.includes(index)}
+                      />
+                    )}
+                  </Fragment>
+                ))}
+                {showLeftIndicator && (
+                  /* cambiar la variable --border cuando la pantalla se sm: */
+                  <div
+                    className={`arrow absolute left-7 ${
+                      showRightIndicator ? "bottom-[48px]" : "bottom-[48px]"
+                    }`}
+                    onClick={handleScrollLeft}
+                  >
+                    <span></span>
+                    <span></span>
+                  </div>
                 )}
-              </Fragment>
-            ))}
-            {showLeftIndicator && (
-              <div
-                className={`arrow absolute left-7 ${
-                  showRightIndicator ? "bottom-[48px]" : "bottom-[64px]"
-                }`}
-                onClick={handleScrollLeft}
-              >
-                <span></span>
-                <span></span>
-              </div>
-            )}
 
-            {showRightIndicator && (
-              <div
-                className="arrow absolute right-7 bottom-[64px] scale-x-[-1]"
-                onClick={handleScrollRight}
-              >
-                <span></span>
-                <span></span>
-              </div>
-            )}
-          </form>
-        )}
+                {showRightIndicator && (
+                  <div
+                    className="arrow absolute right-7 bottom-[48px] scale-x-[-1]"
+                    onClick={handleScrollRight}
+                  >
+                    <span></span>
+                    <span></span>
+                  </div>
+                )}
+              </motion.form>
+            </Fragment>
+          )}
+        </AnimatePresence>
       </div>
-      {isCorrect && (
+      {true && (
         <MessageTimer
           message={"Continuando con tu regalo..."}
           time={5}

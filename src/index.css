@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@layer theme, base, components, utilities;
+
 @font-face {
   font-family: "Kissme";
   src: url("./assets/fonts/Kiss Me Quick.ttf");
@@ -12,6 +14,8 @@
   --animate-heart: heart 1s ease-in-out infinite;
   --font-kissme: "Kissme", "sans-serif";
   --font-love: "Love Light", serif;
+  --font-montez: "Montez", serif;
+  --font-hachi: "Hachi Maru Pop", serif;
 
   @keyframes float {
     0% {
