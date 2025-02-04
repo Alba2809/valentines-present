@@ -75,7 +75,6 @@ function ValentineCard({ isClicked, initialDelay = 0 }) {
           },
         },
       });
-      console.log("is not clicked");
       setPrevClicked(false);
     }
   }, [isClicked, controlsUp]);

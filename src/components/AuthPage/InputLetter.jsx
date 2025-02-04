@@ -44,7 +44,7 @@ function InputLetter({ correctLetter, handleInput, index, showAnswer }) {
       className={`w-[25px] h-[40px] rounded-lg border-2 border-neutral-400 dark:border-gray-700 text-center text-2xl text-slate-800 dark:text-gray-100 ${
         showAnswer
           ? "bg-slate-200 dark:bg-slate-500 dark:text-gray-800"
-          : "bg-transparentdark:text-gray-100"
+          : "bg-transparent dark:text-gray-100"
       } focus:outline-none focus:border-gray-600 focus:dark:border-gray-400`}
       maxLength={1}
       onKeyDown={onKeyDown}

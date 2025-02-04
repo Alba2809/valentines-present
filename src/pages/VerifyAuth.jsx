@@ -10,7 +10,6 @@ function VerifyAuth() {
   useEffect(() => {
     // Si estamos en la ruta "/", establecer localStorage como "false"
     if (location.pathname === "/") {
-        console.log("permitido")
       localStorage.setItem("completedFlowerChallenge", "false");
       setVerifingAuth(false); // Permitir acceso a "/"
       return;
@@ -20,7 +19,6 @@ function VerifyAuth() {
     if (localStorage.getItem("completedFlowerChallenge") === "true") {
       setVerifingAuth(false); // Permitir acceso
     } else {
-      console.log("Unauth");
       navigate("/"); // Redirigir a "/" si no está autenticado
     }
   }, []);

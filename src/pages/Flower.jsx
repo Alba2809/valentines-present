@@ -99,7 +99,7 @@ function Flower() {
               },
             }}
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
-            className="text-gray-400 absolute top-20 md:top-5 left-1/2 transform -translate-x-1/2 font-love text-center leading-16 md:leading-normal" 
+            className="text-gray-400 absolute top-10 md:top-5 left-1/2 transform -translate-x-1/2 font-love text-center leading-16 md:leading-normal" 
             style={{ fontSize: isMobile ? "8vh" : "10vh" }}
           >
             Toca la carta

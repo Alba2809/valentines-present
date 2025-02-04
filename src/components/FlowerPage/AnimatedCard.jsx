@@ -52,10 +52,9 @@ function AnimatedCard({ handleClicked }) {
   useEffect(() => {
     if (clickDisabled) {
       const timer = setTimeout(() => {
-        console.log("can click");
         setShowDialog(true);
         handleClicked(true)
-      }, 8500); // Habilita el clic después de 10 segundos
+      }, 8500);
 
       return () => clearTimeout(timer);
     }

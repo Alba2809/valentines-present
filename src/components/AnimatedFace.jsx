@@ -1,9 +1,9 @@
 import "./styles/AnimatedFace.css";
 
-function AnimatedFace({ attempts, isCorrect }) {
+function AnimatedFace({ attempts, passwordOrdered }) {
   // Determina el emoji basado en los intentos y si la respuesta es correcta
   const getEmoji = () => {
-    if (isCorrect) return "🥰"; // Emoji feliz si la respuesta es correcta
+    if (passwordOrdered) return "🥰"; // Emoji feliz si la respuesta es correcta
     switch (attempts) {
       case 1:
         return "🙂"; // Cara sonriente después del primer error
