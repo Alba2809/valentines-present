@@ -7,7 +7,7 @@ import MessageTimer from "../components/AuthPage/MessageTimer";
 import "../components/styles/Arrow.css";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
-import MessageHelp from "../components/AuthPage/MessageHelp";
+import ThemeToggle from "../components/ThemeToggle";
 
 function Auth() {
   const [attempts, setAttempts] = useState(0);
@@ -16,57 +16,11 @@ function Auth() {
   const [letterToShow, setLetterToShow] = useState([]);
   const [correctPassword, setCorrectPassword] = useState(null);
   const formRef = useRef(null);
-  const [showLeftIndicator, setShowLeftIndicator] = useState(false);
-  const [showRightIndicator, setShowRightIndicator] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const form = formRef.current;
-
-    const handleScroll = () => {
-      if (form) {
-        // Verifica si hay contenido oculto a la izquierda
-        setShowLeftIndicator(form.scrollLeft > 0);
-
-        // Verifica si hay contenido oculto a la derecha
-        setShowRightIndicator(
-          form.scrollLeft + form.clientWidth < form.scrollWidth
-        );
-      }
-    };
-
-    if (!form) return;
-    // Agrega el event listener para el scroll
-    form.addEventListener("scroll", handleScroll);
-
-    // Verifica el estado inicial al cargar el componente
-    handleScroll();
-
-    // Limpia el event listener al desmontar el componente
-    return () => {
-      form.removeEventListener("scroll", handleScroll);
-    };
-  }, [correctPassword]); // Dependencia para recalcular cuando cambia la contraseña
-
-  const handleScrollLeft = () => {
-    // scroll to the left just a little bit
-    formRef.current.scrollBy({
-      left: -50,
-      behavior: "smooth",
-    });
-  };
-
-  const handleScrollRight = () => {
-    // scroll to the right just a little bit
-    formRef.current.scrollBy({
-      left: 50,
-      behavior: "smooth",
-    });
-  };
-
-  useEffect(() => {
     const randomIndex = Math.floor(Math.random() * passwords.length);
-    setCorrectPassword(passwords[2]);
+    setCorrectPassword(passwords[randomIndex]);
   }, []);
 
   const verifyPassword = (password) => {
@@ -165,16 +119,17 @@ function Auth() {
 
   return (
     <div className="min-h-screen bg-pink-100 dark:bg-gray-900 flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      <ThemeToggle />
       <Decorations />
       <div className="bg-white/30 backdrop-blur-sm dark:backdrop-blur-sm dark:bg-gray-800/30 rounded-lg shadow-xl p-8 max-w-md w-full relative z-10">
-      <AnimatePresence mode="popLayout">
-        <motion.h1
-          className="text-red-600 dark:text-red-400 mb-6 text-center font-love font-bold text-4xl"
-          style={{ fontSize: "3.8vh" }}
-          layout
-        >
-          {correctPassword?.messages.initial}
-        </motion.h1>
+        <AnimatePresence mode="popLayout">
+          <motion.h1
+            className="text-red-600 dark:text-red-400 mb-6 text-center font-love font-bold text-4xl"
+            style={{ fontSize: "3.8vh" }}
+            layout
+          >
+            {correctPassword?.messages.initial}
+          </motion.h1>
           <motion.div key="face" className="mb-4" layout>
             <AnimatedFace attempts={attempts} isCorrect={isCorrect} />
           </motion.div>
@@ -195,8 +150,8 @@ function Auth() {
             <Fragment key="form">
               <motion.form
                 ref={formRef}
-                className="mt-4 flex gap-3 justify-around px-4 overflow-x-auto font-hachi font-bold"
-                style={{ scrollBehavior: "smooth", scrollbarWidth: "none" }}
+                className="mt-4 flex gap-3 justify-around overflow-x-auto font-hachi font-bold customScroll pb-2"
+                style={{ scrollBehavior: "smooth" }}
                 layout
               >
                 {correctPassword?.password.split("").map((letter, index) => (
@@ -213,34 +168,13 @@ function Auth() {
                     )}
                   </Fragment>
                 ))}
-                {showLeftIndicator && (
-                  /* cambiar la variable --border cuando la pantalla se sm: */
-                  <div
-                    className={`arrow absolute left-7 ${
-                      showRightIndicator ? "bottom-[48px]" : "bottom-[48px]"
-                    }`}
-                    onClick={handleScrollLeft}
-                  >
-                    <span></span>
-                    <span></span>
-                  </div>
-                )}
-
-                {showRightIndicator && (
-                  <div
-                    className="arrow absolute right-7 bottom-[48px] scale-x-[-1]"
-                    onClick={handleScrollRight}
-                  >
-                    <span></span>
-                    <span></span>
-                  </div>
-                )}
+                
               </motion.form>
             </Fragment>
           )}
         </AnimatePresence>
       </div>
-      {true && (
+      {isCorrect && (
         <MessageTimer
           message={"Continuando con tu regalo..."}
           time={5}

@@ -4,10 +4,13 @@ import "../components/styles/FlowerAnimated.css";
 import MainFlower from "../components/FlowerPage/MainFlower";
 import SecondaryFlowers from "../components/FlowerPage/SecondaryFlowers";
 import GlassFlower from "../components/FlowerPage/GlassFlower";
+import { useMediaQuery } from "@uidotdev/usehooks";
+import AnimatedCard from "../components/FlowerPage/AnimatedCard";
 
 function Flower() {
   const [canClick, setCanClick] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const [cardClicked, setCardClicked] = useState(false);
   const flowersInitialAnimation = 7000; /* Tiempo de espera para que el usuario vea la animacion growing */
   const messageAnimationDurations = {
     duration: 0.5,
@@ -26,6 +29,7 @@ function Flower() {
     delay: 6,
   };
   const controls = useAnimation();
+  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -45,7 +49,7 @@ function Flower() {
     if (clicked) {
       controls.start({
         scale: 0.5,
-        marginTop: -100,
+        marginTop: isMobile ? -200 : -180,
         transition: {
           duration: flowerAnimationDurations.duration,
           ease: flowerAnimationDurations.ease,
@@ -55,9 +59,13 @@ function Flower() {
     }
   }, [clicked, controls]);
 
+  const handleClickedCard = (isClicked) => {
+    setCardClicked(isClicked);
+  };
+
   return (
     <div
-      className={`h-screen w-full bg-gray-900 flex items-end justify-center overflow-hidden`}
+      className={`h-screen w-full bg-gray-900 flex items-end justify-center overflow-hidden relative`}
     >
       <AnimatePresence>
         {!clicked && (
@@ -70,14 +78,35 @@ function Flower() {
                 delay: messageAnimationDurations.delay,
               },
             }}
-            exit={{ opacity: 0 }}
-            className="text-gray-400 absolute top-5 left-1/2 transform -translate-x-1/2 font-love"
-            style={{ fontSize: "10vh" }}
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+            className="text-gray-400 absolute top-20 md:top-5 left-1/2 transform -translate-x-1/2 font-love text-center"
+            style={{ fontSize: isMobile ? "8vh" : "10vh" }}
           >
-            Toca la flor
+            Toca las flores
           </motion.h1>
         )}
       </AnimatePresence>
+
+      <AnimatePresence>
+        {clicked && !cardClicked && (
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: {
+                duration: messageAnimationDurations.duration,
+                delay: 15,
+              },
+            }}
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+            className="text-gray-400 absolute top-20 md:top-5 left-1/2 transform -translate-x-1/2 font-love text-center leading-16 md:leading-normal" 
+            style={{ fontSize: isMobile ? "8vh" : "10vh" }}
+          >
+            Toca la carta
+          </motion.h1>
+        )}
+      </AnimatePresence>
+
       <div className="flowers" onClick={handleClick}>
         <motion.div animate={controls} className="relative">
           <MainFlower />
@@ -97,6 +126,17 @@ function Flower() {
           )}
         </AnimatePresence>
       </div>
+
+      <AnimatePresence>
+        {clicked && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 1, delay: 13 } }}
+          >
+            <AnimatedCard handleClicked={handleClickedCard} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

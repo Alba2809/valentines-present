@@ -2,7 +2,7 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Auth from "./pages/Auth";
 import Flower from "./pages/Flower";
 import VerifyAuth from "./pages/VerifyAuth";
-import ThemeToggle from "./components/ThemeToggle"
+import Test from "./pages/Test";
 
 function App() {
   const location = useLocation();
@@ -10,12 +10,11 @@ function App() {
   return (
     <Routes location={location} key={location.pathname}>
       <Route element={<VerifyAuth />}>
-        <Route element={<ThemeToggle />}>
-          <Route path="/" element={<Auth />} />
-        </Route>
+        <Route path="/" element={<Auth />} />
         <Route path="/flower" element={<Flower />} />
-        <Route path="*" element={<Navigate to="/" />} />
       </Route>
+      {/* <Route path="/test" element={<Test />} /> */}
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 }

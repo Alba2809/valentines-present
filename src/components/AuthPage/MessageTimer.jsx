@@ -14,7 +14,7 @@ function MessageTimer({ message, time, handleFinish }) {
         clearTimeout(timer);
       };
     } else {
-      // handleFinish();
+      handleFinish();
     }
   }, [countdown]);
 

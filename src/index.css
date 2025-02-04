@@ -16,6 +16,7 @@
   --font-love: "Love Light", serif;
   --font-montez: "Montez", serif;
   --font-hachi: "Hachi Maru Pop", serif;
+  --font-ephesis: "Ephesis", serif;
 
   @keyframes float {
     0% {
@@ -44,6 +45,10 @@
   }
 }
 
+#root {
+  position: relative;
+}
+
 .heart {
   --c: #fe1e14;
 
@@ -59,4 +64,35 @@
   .heart {
     --c: #fd79a8;
   }
+}
+
+.customScroll {
+  --colorA: #7a9b77;
+}
+
+/* Tamaño del scroll */
+.customScroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Estilos barra (thumb) de scroll */
+.customScroll::-webkit-scrollbar-thumb {
+  background: var(--colorA);
+  border-radius: 4px;
+}
+
+.customScroll::-webkit-scrollbar-thumb:active {
+  background-color: var(--colorA);
+}
+
+.customScroll::-webkit-scrollbar-thumb:hover {
+  background: var(--colorA);
+  /* box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2); */
+}
+
+/* Estilos track de scroll */
+.customScroll::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
 }
