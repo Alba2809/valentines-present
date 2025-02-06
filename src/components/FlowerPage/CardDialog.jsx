@@ -5,14 +5,10 @@ import { MdCloseFullscreen } from "react-icons/md";
 
 function CardDialog({ handleCloseDialog }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
-  //geet the text from the environment variable
   const [text, setText] = useState("");
 
   useEffect(() => {
-    const textEnv = import.meta.env.VITE_TEXT_CARD + "";
-    // Accede al texto desde la variable de entorno y reemplaza los \n por <br />
-    const formattedText = textEnv?.replace(/\n\n/g, "<br /><br />") || "";
-    setText(formattedText);
+    setText(import.meta.env.VITE_TEXT_CARD || "");
   }, []);
 
   return (
