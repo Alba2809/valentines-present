@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Date 2",
-      "artist": "RADWIMPS",
+      "artist": "Radwimps",
       "album": "Yor Name",
       "duration": 300,
       "url": "/src/assets/music/Date 2.ogg",
@@ -15,8 +15,62 @@
       "artist": "Muerdo",
       "album": "Malditos Domingos",
       "duration": 240,
-      "url": "/src/assets/music/Malditos Domingos Muerdo La Bestia.ogg",
-      "thumbnail": "/src/assets/images/Malditos Domingos.webp"
+      "url": "/src/assets/music/La Bestia.ogg",
+      "thumbnail": "/src/assets/images/La Bestia.webp"
+    },
+    {
+      "id": 3,
+      "title": "Perfect",
+      "artist": "Ed Sheeran",
+      "album": "÷",
+      "duration": 240,
+      "url": "/src/assets/music/Perfect.ogg",
+      "thumbnail": "/src/assets/images/Perfect.webp"
+    },
+    {
+      "id": 4,
+      "title": "Eve",
+      "artist": "The Paper Kites",
+      "album": "Bloom",
+      "duration": 240,
+      "url": "/src/assets/music/Eve.ogg",
+      "thumbnail": "/src/assets/images/Eve.webp"
+    },
+    {
+      "id": 5,
+      "title": "Mala Maña",
+      "artist": "Alex Ferreira",
+      "album": "Malditos Domingos",
+      "duration": 240,
+      "url": "/src/assets/music/Mala Maña.ogg",
+      "thumbnail": "/src/assets/images/Mala Maña.webp"
+    },
+    {
+      "id": 6,
+      "title": "Nandemonaiya",
+      "artist": "Radwimps",
+      "album": "Yor Name",
+      "duration": 240,
+      "url": "/src/assets/music/Nandemonaiya.ogg",
+      "thumbnail": "/src/assets/images/Nandemonaiya.webp"
+    },
+    {
+      "id": 7,
+      "title": "One Summer's Day",
+      "artist": "Joe Hisaishi",
+      "album": "Spirited Away Soundtrack",
+      "duration": 240,
+      "url": "/src/assets/music/One Summers Day.ogg",
+      "thumbnail": "/src/assets/images/One Summers Day.webp"
+    },
+    {
+      "id": 8,
+      "title": "I Won't Give Up - Acoustic",
+      "artist": "Jason Mraz",
+      "album": "Love is a Four Letter Word",
+      "duration": 240,
+      "url": "/src/assets/music/I wont give up.ogg",
+      "thumbnail": "/src/assets/images/I wont give up.webp"
     }
   ]
 }

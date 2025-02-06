@@ -99,31 +99,38 @@ function AudioPlayer() {
                 /* spin animaiton */
                 animate={
                   isMobile && !isExpanded
-                    ? { rotate: 360, transition: { duration: 3, repeat: Infinity, ease: "linear" } }
+                    ? {
+                        rotate: 360,
+                        transition: {
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "linear",
+                        },
+                      }
                     : { rotate: 0 }
                 }
                 exit={{ rotate: 0 }}
-                className={`size-full ${
-                  isMobile && !isExpanded ? "rounded-full" : "rounded"
+                className={`size-full object-contain ${
+                  isMobile && !isExpanded ? "rounded-full " : "rounded"
                 }`}
                 onClick={isMobile && !isExpanded ? toggleExpand : null}
               />
             </motion.div>
             <div
-              className={`flex-grow ${isExpanded && "flex-col"} ${
-                isMobile && !isExpanded && "hidden"
+              className={`flex-grow ${isExpanded ? "flex-col" : ""} ${
+                isMobile && !isExpanded ? "hidden" : ""
               }`}
             >
               <h2
                 className={`text-white line-clamp-1 ${
-                  isExpanded ? "text-lg font-semibold " : "text-sm truncate"
+                  isExpanded ? "text-lg font-semibold " : "text-sm"
                 }`}
               >
                 {currentTrack.title}
               </h2>
               <p
                 className={`text-gray-400 line-clamp-1 ${
-                  isExpanded ? "text-base" : "text-xs truncate"
+                  isExpanded ? "text-base" : "text-xs"
                 }`}
               >
                 {currentTrack.artist}
@@ -140,13 +147,13 @@ function AudioPlayer() {
               )}
             </div>
             <div
-              className={`flex gap-5 ${isExpanded && "self-start"}  ${
-                isMobile && "hidden"
+              className={`flex gap-5 ${isExpanded ? "self-start" : ""}  ${
+                isMobile ? "hidden" : ""
               }`}
             >
               {!isExpanded && (
                 <button
-                  className="w-6 h-6 rounded-full text-gray-400 hover:text-white flex items-center justify-center"
+                  className="rounded-full text-gray-400 hover:text-white flex items-center justify-center"
                   onClick={togglePlayPause}
                 >
                   {playerState.isPlaying ? (
