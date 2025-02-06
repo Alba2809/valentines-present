@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<Auth />} />
         <Route path="/flower" element={<Flower />} />
       </Route>
-      {/* <Route path="/test" element={<Test />} /> */}
+      <Route path="/test" element={<Test />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

@@ -6,14 +6,13 @@ import { MdCloseFullscreen } from "react-icons/md";
 function CardDialog({ handleCloseDialog }) {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
   //geet the text from the environment variable
-  const [text, setText] = useState([]);
+  const [text, setText] = useState("");
 
   useEffect(() => {
-    // Accede al texto desde la variable de entorno y divide en líneas
-    const rawText = import.meta.env.VITE_TEXT_CARD || "";
-    console.log(typeof rawText);
-    const lines = rawText.split("\n\n"); // Divide por dobles saltos de línea
-    setText(lines);
+    const textEnv = import.meta.env.VITE_TEXT_CARD + "";
+    // Accede al texto desde la variable de entorno y reemplaza los \n por <br />
+    const formattedText = textEnv?.replace(/\n\n/g, "<br /><br />") || "";
+    setText(formattedText);
   }, []);
 
   return (
@@ -41,18 +40,9 @@ function CardDialog({ handleCloseDialog }) {
           }}
           className="text-left font-montez my-3 mb-10"
           style={{ fontSize: "2.5vh", textWrap: "pretty" }}
+          dangerouslySetInnerHTML={{ __html: text }}
         >
-          {text.map((line, index) => (
-            <>
-              {line}
-              {index != text.length - 1 && (
-                <>
-                  <br />
-                  <br />{" "}
-                </>
-              )}
-            </>
-          ))}
+          {/* TODO: Agregar texto aquí, el texto final será por variable de entorno */}
         </motion.p>
       </motion.div>
 
