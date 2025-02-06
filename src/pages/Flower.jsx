@@ -6,6 +6,7 @@ import SecondaryFlowers from "../components/FlowerPage/SecondaryFlowers";
 import GlassFlower from "../components/FlowerPage/GlassFlower";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import AnimatedCard from "../components/FlowerPage/AnimatedCard";
+import AudioPlayer from "../components/AudioPlayer";
 
 function Flower() {
   const [canClick, setCanClick] = useState(false);
@@ -137,6 +138,8 @@ function Flower() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AudioPlayer />
     </div>
   );
 }

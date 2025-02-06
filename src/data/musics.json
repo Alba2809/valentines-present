@@ -1,0 +1,22 @@
+{
+  "music": [
+    {
+      "id": 1,
+      "title": "Date 2",
+      "artist": "RADWIMPS",
+      "album": "Yor Name",
+      "duration": 300,
+      "url": "/src/assets/music/Date 2.ogg",
+      "thumbnail": "/src/assets/images/Date 2.webp"
+    },
+    {
+      "id": 2,
+      "title": "La Bestia",
+      "artist": "Muerdo",
+      "album": "Malditos Domingos",
+      "duration": 240,
+      "url": "/src/assets/music/Malditos Domingos Muerdo La Bestia.ogg",
+      "thumbnail": "/src/assets/images/Malditos Domingos.webp"
+    }
+  ]
+}

@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@layer theme, base, components, utilities;
-
 @font-face {
   font-family: "Kissme";
   src: url("./assets/fonts/Kiss Me Quick.ttf");
