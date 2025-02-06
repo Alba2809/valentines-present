@@ -18,7 +18,7 @@ function Auth() {
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * passwords.length);
-    setPasswordData(passwords[1]);
+    setPasswordData(passwords[randomIndex]);
   }, []);
 
   const handleFinish = () => {
