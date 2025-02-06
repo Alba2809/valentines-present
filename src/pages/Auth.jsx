@@ -11,7 +11,6 @@ import ReorderWord from "../components/AuthPage/ReorderWord";
 
 function Auth() {
   const [attempts, setAttempts] = useState(0);
-  const [message, setMessage] = useState(null);
   const [passwordOrdered, setPasswordOrdered] = useState(false);
   const [passwordData, setPasswordData] = useState(null);
   const [wordsOrdered, setWordsOrdered] = useState([]);
@@ -19,7 +18,7 @@ function Auth() {
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * passwords.length);
-    setPasswordData(passwords[randomIndex]);
+    setPasswordData(passwords[1]);
   }, []);
 
   const handleFinish = () => {
@@ -43,7 +42,6 @@ function Auth() {
     if (wordsOrdered.length === passwordData?.password.length) {
       const timer = setTimeout(() => {
         setPasswordOrdered(true);
-        setMessage(passwordData.messages.error);
       }, 3000);
       return () => clearTimeout(timer);
     }
@@ -71,7 +69,7 @@ function Auth() {
         <AnimatePresence mode="popLayout">
           <motion.h1
             key={"title"}
-            className="text-red-600 dark:text-red-400 mb-6 text-center font-love font-bold text-4xl"
+            className="text-red-600 dark:text-red-400 mb-6 text-center font-montez font-bold"
             style={{ fontSize: "3.8vh" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 0.3 } }}
@@ -90,20 +88,7 @@ function Auth() {
               passwordOrdered={passwordOrdered}
             />
           </motion.div>
-          {message && (
-            <motion.p
-              key="message"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { duration: 0.3 } }}
-              exit={{ opacity: 0 }}
-              className="text-center text-gray-800 dark:text-gray-200 font-montez"
-              style={{ fontSize: "2.8vh" }}
-              layout
-            >
-              {message}
-            </motion.p>
-          )}
-          <Fragment key="paswword">
+          <div key="paswword" className="flex flex-col gap-y-5 items-center">
             {passwordData?.password.map((word, index) => (
               <Fragment key={index}>
                 <ReorderWord
@@ -111,10 +96,10 @@ function Auth() {
                   indexOriginalWord={index}
                   originalWord={word}
                 />
-                {index <= passwordData.password.length - 1 && <br />}
+                {/* {index <= passwordData.password.length - 1 && <br />} */}
               </Fragment>
             ))}
-          </Fragment>
+          </div>
         </AnimatePresence>
       </div>
       {passwordOrdered && (

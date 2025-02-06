@@ -56,10 +56,10 @@ function ReorderWord({ originalWord, handleReorder, indexOriginalWord }) {
           key={item.id}
           value={item}
           drag={allowDrag}
-          className="cursor-pointer w-[25px] h-[40px] rounded-lg border-2 border-neutral-400 dark:border-gray-700 text-center text-2xl text-slate-800 dark:text-gray-100 bg-transparent"
+          className="cursor-pointer w-[25px] h-[40px] rounded-lg border-2 border-neutral-400 dark:border-gray-700 text-center text-2xl text-slate-800 dark:text-gray-100 bg-transparent flex items-center justify-center"
           onDragEnd={() => handleDragEnd(items)}
         >
-          {item.char}
+          <p className="font-hachi" style={{ fontSize: "2.5vh" }}>{item.char}</p>
         </Reorder.Item>
       ))}
     </Reorder.Group>
