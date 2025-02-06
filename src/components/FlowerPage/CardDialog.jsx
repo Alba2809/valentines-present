@@ -9,11 +9,10 @@ function CardDialog({ handleCloseDialog }) {
   const [text, setText] = useState("");
 
   useEffect(() => {
+    const textEnv = import.meta.env.VITE_TEXT_CARD
+    console.log(textEnv)
     // Accede al texto desde la variable de entorno y reemplaza los \n por <br />
-    const formattedText = import.meta.env.VITE_TEXT_CARD.replace(
-      /\n/g,
-      "<br />"
-    ) || "";
+    const formattedText = textEnv?.replace(/\n\n/g, "<br /><br />") || "";
     setText(formattedText);
   }, []);
 
