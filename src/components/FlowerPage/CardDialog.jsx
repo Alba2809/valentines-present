@@ -11,6 +11,7 @@ function CardDialog({ handleCloseDialog }) {
   useEffect(() => {
     // Accede al texto desde la variable de entorno y divide en líneas
     const rawText = import.meta.env.VITE_TEXT_CARD || "";
+    console.log(typeof rawText);
     const lines = rawText.split("\n\n"); // Divide por dobles saltos de línea
     setText(lines);
   }, []);
