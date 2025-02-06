@@ -81,7 +81,7 @@ function AnimatedCard({ handleClicked }) {
   return (
     <>
       <motion.div
-        className="absolute z-50 font-kissme"
+        className="absolute z-40 font-kissme"
         initial={initialData}
         animate={constrolsMove}
         onClick={handleClick}
@@ -99,7 +99,7 @@ function AnimatedCard({ handleClicked }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { duration: 0.8 } }}
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
-            className="bg-[#eae2b7] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[150] w-[80%] h-[80%] flex items-center justify-center"
+            className="bg-[#eae2b7] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[50] w-[80%] h-[80%] flex items-center justify-center"
           >
             <CardDialog handleCloseDialog={handleCloseDialog} />
           </motion.div>
