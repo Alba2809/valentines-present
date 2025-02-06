@@ -6,8 +6,8 @@
       "artist": "Radwimps",
       "album": "Yor Name",
       "duration": 300,
-      "url": "/src/assets/music/Date 2.ogg",
-      "thumbnail": "/src/assets/images/Date 2.webp"
+      "url": "./src/assets/music/Date 2.ogg",
+      "thumbnail": "./src/assets/images/Date 2.webp"
     },
     {
       "id": 2,
@@ -15,8 +15,8 @@
       "artist": "Muerdo",
       "album": "Malditos Domingos",
       "duration": 240,
-      "url": "/src/assets/music/La Bestia.ogg",
-      "thumbnail": "/src/assets/images/La Bestia.webp"
+      "url": "./src/assets/music/La Bestia.ogg",
+      "thumbnail": "./src/assets/images/La Bestia.webp"
     },
     {
       "id": 3,
@@ -24,8 +24,8 @@
       "artist": "Ed Sheeran",
       "album": "÷",
       "duration": 240,
-      "url": "/src/assets/music/Perfect.ogg",
-      "thumbnail": "/src/assets/images/Perfect.webp"
+      "url": "./src/assets/music/Perfect.ogg",
+      "thumbnail": "./src/assets/images/Perfect.webp"
     },
     {
       "id": 4,
@@ -33,8 +33,8 @@
       "artist": "The Paper Kites",
       "album": "Bloom",
       "duration": 240,
-      "url": "/src/assets/music/Eve.ogg",
-      "thumbnail": "/src/assets/images/Eve.webp"
+      "url": "./src/assets/music/Eve.ogg",
+      "thumbnail": "./src/assets/images/Eve.webp"
     },
     {
       "id": 5,
@@ -42,8 +42,8 @@
       "artist": "Alex Ferreira",
       "album": "Malditos Domingos",
       "duration": 240,
-      "url": "/src/assets/music/Mala Maña.ogg",
-      "thumbnail": "/src/assets/images/Mala Maña.webp"
+      "url": "./src/assets/music/Mala Maña.ogg",
+      "thumbnail": "./src/assets/images/Mala Maña.webp"
     },
     {
       "id": 6,
@@ -51,8 +51,8 @@
       "artist": "Radwimps",
       "album": "Yor Name",
       "duration": 240,
-      "url": "/src/assets/music/Nandemonaiya.ogg",
-      "thumbnail": "/src/assets/images/Nandemonaiya.webp"
+      "url": "./src/assets/music/Nandemonaiya.ogg",
+      "thumbnail": "./src/assets/images/Nandemonaiya.webp"
     },
     {
       "id": 7,
@@ -60,8 +60,8 @@
       "artist": "Joe Hisaishi",
       "album": "Spirited Away Soundtrack",
       "duration": 240,
-      "url": "/src/assets/music/One Summers Day.ogg",
-      "thumbnail": "/src/assets/images/One Summers Day.webp"
+      "url": "./src/assets/music/One Summers Day.ogg",
+      "thumbnail": "./src/assets/images/One Summers Day.webp"
     },
     {
       "id": 8,
@@ -69,8 +69,8 @@
       "artist": "Jason Mraz",
       "album": "Love is a Four Letter Word",
       "duration": 240,
-      "url": "/src/assets/music/I wont give up.ogg",
-      "thumbnail": "/src/assets/images/I wont give up.webp"
+      "url": "./src/assets/music/I wont give up.ogg",
+      "thumbnail": "./src/assets/images/I wont give up.webp"
     }
   ]
 }
