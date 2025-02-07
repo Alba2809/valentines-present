@@ -40,10 +40,7 @@ function Auth() {
 
   useEffect(() => {
     if (wordsOrdered.length === passwordData?.password.length) {
-      const timer = setTimeout(() => {
-        setPasswordOrdered(true);
-      }, 3000);
-      return () => clearTimeout(timer);
+      setPasswordOrdered(true);
     }
   }, [wordsOrdered]);
 
@@ -96,7 +93,6 @@ function Auth() {
                   indexOriginalWord={index}
                   originalWord={word}
                 />
-                {/* {index <= passwordData.password.length - 1 && <br />} */}
               </Fragment>
             ))}
           </div>

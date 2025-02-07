@@ -55,8 +55,8 @@ function ReorderWord({ originalWord, handleReorder, indexOriginalWord }) {
         <Reorder.Item
           key={item.id}
           value={item}
-          drag={allowDrag}
-          className={`w-[25px] h-[40px] rounded-lg border-2 border-neutral-400 dark:border-gray-700 text-center text-2xl text-slate-800 dark:text-gray-100 bg-transparent flex items-center justify-center ${ allowDrag ? "cursor-grab" : "cursor-default"}`}
+          drag={allowDrag ? "x" : ""}
+          className={`w-[35px] h-[45px] md:w-[25px] md:h-[40px] rounded-lg border-2 border-neutral-400 dark:border-gray-700 text-center text-2xl text-slate-800 dark:text-gray-100 bg-transparent flex items-center justify-center ${ allowDrag ? "cursor-grab" : "cursor-default"}`}
           onDragEnd={() => handleDragEnd(items)}
         >
           <p className="font-hachi" style={{ fontSize: "2.5vh" }}>{item.char}</p>

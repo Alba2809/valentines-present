@@ -20,7 +20,7 @@ function CardDialog({ handleCloseDialog }) {
           y: 0,
           transition: { duration: 0.5, delay: 1.1 },
         }}
-        className="text-left font-love font-bold"
+        className="text-left font-love font-bold subpixel-antialiased"
         style={{ fontSize: "3.5vh" }}
       >
         Para alguien especial:

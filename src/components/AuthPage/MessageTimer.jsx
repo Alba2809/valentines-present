@@ -20,10 +20,10 @@ function MessageTimer({ message, time, handleFinish }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, bottom: -10 }}
-      animate={{ opacity: 1, bottom: 0, transition: { duration: 0.3 } }}
+      initial={{ opacity: 0, top: -10 }}
+      animate={{ opacity: 1, top: 40, transition: { duration: 0.3 } }}
       //   exit={{ y: 10, opacity: 0 }}
-      className="absolute bottom-0 left-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-3 bg-white/50 backdrop-blur-sm dark:bg-gray-800/50 dark:backdrop-blur-sm rounded-lg w-fit flex items-center justify-center gap-x-2 shadow-xl font-hachi font-bold text-gray-800 dark:text-gray-200"
+      className="absolute top-[40px] left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-3 bg-white/50 backdrop-blur-sm dark:bg-gray-800/50 dark:backdrop-blur-sm rounded-lg w-fit flex items-center justify-center gap-x-2 shadow-xl font-hachi font-bold text-gray-800 dark:text-gray-200 h-fit z-50"
       style={{ fontSize: "1.6vh" }}
     >
       {/* create a animation for the message, where each letter move up and down in different speeds each letter */}

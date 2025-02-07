@@ -28,7 +28,7 @@ function ThemeToggle() {
       {isDark ? (
         <div className="text-3xl">🌼</div>
       ) : (
-        <div className="text-3xl pt-1">🏶</div>
+        <div className="text-3xl">🏶</div>
       )}
     </button>
   );
