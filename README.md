@@ -14,6 +14,22 @@ Este proyecto es una página web interactiva creada como un regalo especial para
 
 ---
 
+## Capturas de pantalla 📸
+
+![Página de inicio](./public/screenshots/HomeDark.png)
+
+![Página de inicio completada](./public/screenshots/HomeDarkCompleted.png)
+
+![Animación de la flor principal](./public/screenshots/MainFlower.png)
+
+![Animación de la flor y carta](./public/screenshots/FlowerCard.png)
+
+![Dialog de la música](./public/screenshots/MusicDialog.png)
+
+![Dialog de la carta](./public/screenshots/CardDialog.png)
+
+---
+
 ## Estructura del proyecto 📂
 
 ```plaintext
