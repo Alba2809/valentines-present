@@ -12,6 +12,7 @@ import { useState } from "react";
 import Slider from "./Slider";
 import { motion, AnimatePresence } from "motion/react";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { Outlet } from "react-router-dom";
 
 function AudioPlayer() {
   const {
@@ -45,7 +46,7 @@ function AudioPlayer() {
   return (
     <>
       <motion.div
-        className={`fixed bg-[#1a2633]/40 backdrop-blur-sm z-[100] ${
+        className={`fixed bg-[#1a2633]/40 backdrop-blur-sm z-[99] ${
           isExpanded ? "shadow-2xl" : "shadow-lg"
         } ${isMobile && !isExpanded ? "rounded-full" : "rounded-lg"}`}
         initial={{
@@ -93,8 +94,8 @@ function AudioPlayer() {
               exit={{ opacity: 0 }}
             >
               <motion.img
-                src={currentTrack.thumbnail || ""}
-                alt={`${currentTrack.title}`}
+                src={currentTrack?.thumbnail || ""}
+                alt={`${currentTrack?.title}`}
                 initial={{ rotate: 0 }}
                 /* spin animaiton */
                 animate={
@@ -126,14 +127,14 @@ function AudioPlayer() {
                   isExpanded ? "text-lg font-semibold " : "text-sm"
                 }`}
               >
-                {currentTrack.title}
+                {currentTrack?.title}
               </h2>
               <p
                 className={`text-gray-400 line-clamp-1 ${
                   isExpanded ? "text-base" : "text-xs"
                 }`}
               >
-                {currentTrack.artist}
+                {currentTrack?.artist}
               </p>
               {isExpanded && (
                 <motion.p
@@ -142,7 +143,7 @@ function AudioPlayer() {
                   exit={{ opacity: 0 }}
                   className="text-gray-500 line-clamp-1"
                 >
-                  {currentTrack.album}
+                  {currentTrack?.album}
                 </motion.p>
               )}
             </div>
@@ -247,6 +248,8 @@ function AudioPlayer() {
           ></motion.div>
         )}
       </AnimatePresence>
+
+      <Outlet />
     </>
   );
 }

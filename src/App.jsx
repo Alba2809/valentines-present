@@ -3,17 +3,31 @@ import Auth from "./pages/Auth";
 import Flower from "./pages/Flower";
 import VerifyAuth from "./pages/VerifyAuth";
 import Test from "./pages/Test";
+import Navigator from "./components/Navigator";
+import { FlowerAndCard, HeartModel, Home, TestPage } from "./data/paths.json";
+import Heart3D from "./pages/Heart3D";
+import AudioPlayer from "./components/AudioPlayer";
 
 function App() {
   const location = useLocation();
 
   return (
-    <Routes location={location} key={location.pathname}>
+    <Routes location={location}>
       <Route element={<VerifyAuth />}>
-        <Route path="/" element={<Auth />} />
-        <Route path="/flower" element={<Flower />} />
+        <Route path={Home} element={<Auth />} />
+        
+        <Route element={<Navigator />}>
+          <Route element={<AudioPlayer />}>
+            <Route path={FlowerAndCard} element={<Flower />} />
+            <Route path={HeartModel} element={<Heart3D />} />
+          </Route>
+        </Route>
       </Route>
-      {/* <Route path="/test" element={<Test />} /> */}
+      {/* <Route element={<Navigator />}>
+        <Route element={<AudioPlayer />}>
+          <Route path={Test} element={<Test />} />
+        </Route>
+      </Route> */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

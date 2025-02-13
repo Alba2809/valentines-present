@@ -139,7 +139,7 @@ function Flower() {
         )}
       </AnimatePresence>
 
-      <AudioPlayer />
+      {/* <AudioPlayer /> */}
     </div>
   );
 }

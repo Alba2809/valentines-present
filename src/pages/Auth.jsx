@@ -4,17 +4,17 @@ import AnimatedFace from "../components/AnimatedFace";
 import { passwords } from "../data/passwords.json";
 import MessageTimer from "../components/AuthPage/MessageTimer";
 import "../components/styles/Arrow.css";
-import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import ThemeToggle from "../components/ThemeToggle";
 import ReorderWord from "../components/AuthPage/ReorderWord";
+import ChooseSection from "../components/AuthPage/ChooseSection";
 
 function Auth() {
   const [attempts, setAttempts] = useState(0);
   const [passwordOrdered, setPasswordOrdered] = useState(false);
   const [passwordData, setPasswordData] = useState(null);
   const [wordsOrdered, setWordsOrdered] = useState([]);
-  const navigate = useNavigate();
+  const [showSections, setShowSections] = useState(false);
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * passwords.length);
@@ -22,8 +22,7 @@ function Auth() {
   }, []);
 
   const handleFinish = () => {
-    localStorage.setItem("completedFlowerChallenge", "true");
-    navigate("/flower");
+    setShowSections(true);
   };
 
   const handleReorder = (indexWord, isOrdered) => {
@@ -105,6 +104,8 @@ function Auth() {
           handleFinish={handleFinish}
         />
       )}
+
+      {showSections && <ChooseSection />}
     </div>
   );
 }

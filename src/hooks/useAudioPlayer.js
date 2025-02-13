@@ -7,7 +7,7 @@ export const useAudioPlayer = (tracks = []) => {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(() => {
     if (typeof window === "undefined") return 0;
 
-    const storedIndex = localStorage.getItem(STORAGE_KEY);
+    const storedIndex = localStorage.getItem(STORAGE_KEY) || 0;
     return storedIndex ? parseInt(storedIndex) : 0;
   });
 
@@ -121,6 +121,14 @@ export const useAudioPlayer = (tracks = []) => {
 
     audioRef.current.currentTime = time;
     setPlayerState((prev) => ({ ...prev, currentTime: time }));
+  }, []);
+
+  useEffect(() => {
+    // global clean
+    return () => {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    };
   }, []);
 
   return {

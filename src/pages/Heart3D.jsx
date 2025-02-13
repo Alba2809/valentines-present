@@ -4,7 +4,7 @@ import PersonHeartModel from "../components/PersonHeartModel";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import LoadingScreen from "../components/ThreeJs/LoadingScreen";
 
-function Test() {
+function Heart3D() {
   const [clicked, setClicked] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
@@ -57,4 +57,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default Heart3D;

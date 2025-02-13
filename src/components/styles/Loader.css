@@ -1,0 +1,43 @@
+/* HTML: <div class="loaderHeart"></div> */
+.loaderHeart {
+  width: 60px;
+  aspect-ratio: 1;
+  background: linear-gradient(#dc1818 0 0) bottom/100% 0% no-repeat #ccc;
+  -webkit-mask: radial-gradient(circle at 60% 65%, #000 62%, #0000 65%) top left,
+    radial-gradient(circle at 40% 65%, #000 62%, #0000 65%) top right,
+    linear-gradient(to bottom left, #000 42%, #0000 43%) bottom left,
+    linear-gradient(to bottom right, #000 42%, #0000 43%) bottom right;
+  -webkit-mask-size: 50% 50%;
+  -webkit-mask-repeat: no-repeat;
+  animation: l19 2s infinite linear;
+}
+@keyframes l19 {
+  90%,
+  100% {
+    background-size: 100% 100%;
+  }
+}
+
+/* HTML: <div class="loaderText"></div> */
+.loaderText {
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30px;
+  display: inline-grid;
+}
+.loaderText:before,
+.loaderText:after {
+  content: "Cargando...";
+  grid-area: 1/1;
+  -webkit-mask: linear-gradient(90deg, #000 50%, #0000 0) 0 50%/2ch 100%;
+  animation: l11 1s infinite cubic-bezier(0.5, 220, 0.5, -220);
+}
+.loaderText:after {
+  -webkit-mask-position: 1ch 50%;
+  --s: -1;
+}
+@keyframes l11 {
+  100% {
+    transform: translateY(calc(var(--s, 1) * 0.1%));
+  }
+}

@@ -7,10 +7,11 @@ Este proyecto es una página web interactiva creada como un regalo especial para
 ## Características principales ✨
 
 - **Animaciones personalizadas**: Flores que crecen, una carta que se abre y más.
-- **Reproductor de música integrado**: Con canciones seleccionadas especialmente.
+- **Reproductor de música integrado**: Con canciones seleccionadas especialmente de artistas como Radwimps, Ed Sheeran y más.
 - **Interactividad**: El usuario puede interactuar con la página para descubrir mensajes ocultos.
 - **Diseño responsive**: Funciona en dispositivos móviles y de escritorio.
 - **Tema claro/oscuro**: Adaptable a las preferencias del usuario.
+- **Modelos 3D**: Un corazón que se mueve y gira, junto con un cuerpo que entrega el corazón.
 
 ---
 
@@ -110,6 +111,11 @@ alba2809-valentines-present/
 - **Framer Motion**: Para animaciones fluidas y dinámicas.
 - **React Router**: Para la navegación entre páginas.
 - **React Icons**: Para íconos visuales.
+- **Three.js**: Biblioteca para crear modelos 3D.
+- **GSAP**: Animación de GSAP para crear animaciones.
+- **React Three Fiber**: Biblioteca para crear modelos 3D.
+- **React Three Postprocessing**: Biblioteca para crear efectos visuales.
+- **React Three Drei**: Biblioteca para crear modelos 3D.
 
 ---
 
@@ -145,9 +151,9 @@ El proyecto está configurado para desplegarse en Vercel. [Ir a la web](https://
 
 ---
 
-## Extras 🙌
+## Modelos 3D 🎨
 
-- **Música**: Canciones seleccionadas de artistas como Radwimps, Ed Sheeran y más.
-- **Fuentes**: Tipografías especiales para un toque único.
-- **Animaciones**: Diseñadas con ❤️ para transmitir emociones.
+Modelos base obtenidos de [SketchFab](https://sketchfab.com). Los modelos fueron modificados para que se ajustaran a lo deseado, desde el tamaño, la forma y animaciones.
 
+- **Cuerpo base**: This work is based on ["Male base mesh"](https://sketchfab.com/3d-models/male-base-mesh-427fc72a505140abbd56451d692a3734) by [bhagath2005](https://sketchfab.com/bhagath2005) licensed under [CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/)
+- **Corazón**: This work is based on ["PUMPING HEART MODEL"](https://sketchfab.com/3d-models/pumping-heart-model-6f815b9822dc479eae0a17b8dcab9c75) by [omarelone](https://sketchfab.com/omarelone) licensed under [CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/)
