@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import CameraController from "./ThreeJs/cameraController";
+import CameraController from "./ThreeJs/CameraController";
 import BloomEffect from "./ThreeJs/BloomEffect";
 import Lights from "./ThreeJs/Lights";
 import { useEffect, useRef, useState } from "react";
