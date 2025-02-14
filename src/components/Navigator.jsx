@@ -5,9 +5,11 @@ import { IoMdHome } from "react-icons/io";
 import { IoFlowerSharp, IoHeart } from "react-icons/io5";
 import { Outlet, useNavigate } from "react-router-dom";
 import { FlowerAndCard, HeartModel, Home } from "../data/paths.json";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 function Navigator() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
   const navigate = useNavigate();
   const currentPath = window.location.pathname;
 
@@ -66,8 +68,8 @@ function Navigator() {
                 className="flex items-center gap-3 text-gray-300 hover:text-white transition duration-300 cursor-pointer w-full"
                 onClick={() => navigateTo(Home)}
               >
-                <IoMdHome className="size-[30px]" />
-                <p className="font-ephesis" style={{ fontSize: "2rem" }}>
+                <IoMdHome className={isMobile ? "size-[25px]" : "size-[30px]"} />
+                <p className="font-ephesis" style={{ fontSize: isMobile ? "1.7rem" : "2rem" }}>
                   Inicio
                 </p>
               </motion.div>
@@ -83,8 +85,8 @@ function Navigator() {
                   className="flex items-center gap-3 text-gray-300 hover:text-yellow-300 transition duration-300 cursor-pointer w-full"
                   onClick={() => navigateTo(FlowerAndCard)}
                 >
-                  <IoFlowerSharp className="size-[30px]" />
-                  <p className="font-ephesis" style={{ fontSize: "2rem" }}>
+                  <IoFlowerSharp className={isMobile ? "size-[25px]" : "size-[30px]"} />
+                  <p className="font-ephesis" style={{ fontSize: isMobile ? "1.7rem" : "2rem" }}>
                     Flor
                   </p>
                 </motion.div>
@@ -101,8 +103,8 @@ function Navigator() {
                   className="flex items-center gap-3 text-gray-300 hover:text-red-400 transition duration-300 cursor-pointer w-full"
                   onClick={() => navigateTo(HeartModel)}
                 >
-                  <IoHeart className="size-[30px]" />
-                  <p className="font-ephesis" style={{ fontSize: "2rem" }}>
+                  <IoHeart className={isMobile ? "size-[25px]" : "size-[30px]"} />
+                  <p className="font-ephesis" style={{ fontSize: isMobile ? "1.7rem" : "2rem" }}>
                     Corazón
                   </p>
                 </motion.div>

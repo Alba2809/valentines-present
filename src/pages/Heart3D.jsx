@@ -43,7 +43,7 @@ function Heart3D() {
             }}
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
             className="text-gray-800 absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-love text-center leading-normal z-50 animate-pulse"
-            style={{ fontSize: isMobile ? "8vh" : "5vh" }}
+            style={{ fontSize: isMobile ? "4vh" : "5vh" }}
           >
             Cada giro de este corazón
             <br />

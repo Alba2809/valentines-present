@@ -2,9 +2,11 @@ import { motion } from "motion/react";
 import { IoFlowerSharp, IoHeart } from "react-icons/io5";
 import { FlowerAndCard, HeartModel } from "../../data/paths.json";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 function ChooseSection() {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 
   const navigateTo = (path) => {
     localStorage.setItem("completedFlowerChallenge", "true");
@@ -30,7 +32,7 @@ function ChooseSection() {
           animate={{ opacity: 1, transition: { delay: 0.5 } }}
           exit={{ opacity: 0, transition: { delay: 0 } }}
           className="text-red-600 dark:text-red-400 mb-6 text-center font-love"
-          style={{ fontSize: "3.8vh" }}
+          style={{ fontSize: isMobile ? "1.8rem" : "2.5rem" }}
         >
           ¿A sección te gustaría ir?
         </motion.h1>
@@ -44,8 +46,8 @@ function ChooseSection() {
           className="flex items-center gap-3 text-gray-800 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-300 transition duration-300 cursor-pointer w-full"
           onClick={() => navigateTo(FlowerAndCard)}
         >
-          <IoFlowerSharp className="size-[30px]" />
-          <p className="font-ephesis" style={{ fontSize: "2rem" }}>
+          <IoFlowerSharp className={isMobile ? "size-[25px]" : "size-[30px]"} />
+          <p className="font-ephesis" style={{ fontSize: isMobile ? "1.7rem" : "2rem" }}>
             Flor
           </p>
         </motion.div>
@@ -63,8 +65,8 @@ function ChooseSection() {
           className="flex items-center gap-3 text-gray-800 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400 transition duration-300 cursor-pointer w-full"
           onClick={() => navigateTo(HeartModel)}
         >
-          <IoHeart className="size-[30px]" />
-          <p className="font-ephesis" style={{ fontSize: "2rem" }}>
+          <IoHeart className={isMobile ? "size-[25px]" : "size-[30px]"} />
+          <p className="font-ephesis" style={{ fontSize: isMobile ? "1.7rem" : "2rem" }}>
             Corazón
           </p>
         </motion.div>
