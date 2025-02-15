@@ -1,15 +1,7 @@
-import { useMediaQuery } from "@uidotdev/usehooks";
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
 import { MdCloseFullscreen } from "react-icons/md";
 
-function CardDialog({ handleCloseDialog }) {
-  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
-  const [text, setText] = useState("");
-
-  useEffect(() => {
-    setText(import.meta.env.VITE_TEXT_CARD || "");
-  }, []);
+function CardDialog({ handleCloseDialog, isMobile, textCard }) {
 
   return (
     <div className="w-[95%] h-[96%] md:h-[90%] border-dotted border-[3px] border-[#003049] py-5 px-5 md:py-10 md:px-14 relative z-50">
@@ -36,7 +28,7 @@ function CardDialog({ handleCloseDialog }) {
           }}
           className="text-left font-montez my-3 mb-10"
           style={{ fontSize: "2.5vh", textWrap: "pretty" }}
-          dangerouslySetInnerHTML={{ __html: text }}
+          dangerouslySetInnerHTML={{ __html: textCard }}
         >
           {/* TODO: Agregar texto aquí, el texto final será por variable de entorno */}
         </motion.p>

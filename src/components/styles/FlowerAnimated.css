@@ -318,6 +318,7 @@
 .flower__line__leaf--2 {
   top: 45%;
   transform: rotate(70deg) rotateY(30deg);
+  z-index: -1;
 }
 .flower__line__leaf--3,
 .flower__line__leaf--4,
@@ -334,15 +335,18 @@
   top: 40%;
 }
 .flower__line__leaf--5 {
+  left: 15px;
   top: 0;
   transform-origin: left;
   transform: rotate(70deg) rotateY(30deg) scale(0.6);
+  z-index: -1;
 }
 .flower__line__leaf--6 {
   top: -2%;
   left: -450%;
   transform-origin: right;
   transform: rotate(-70deg) rotateY(30deg) scale(0.6);
+  z-index: -1;
 }
 .flower__light {
   position: absolute;

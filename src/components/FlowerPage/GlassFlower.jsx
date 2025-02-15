@@ -1,20 +1,12 @@
-import { useMediaQuery } from "@uidotdev/usehooks";
 import { motion } from "motion/react";
 
-function GlassFlower({ glassContainerAnimationDurations }) {
-  const isMobile = useMediaQuery("only screen and (max-width: 768px)");
-  const initialData = {
-    x: isMobile ? 200 : 400,
-    y: isMobile ? -600 : -1000,
-    rotate: 45,
-    opacity: 0,
-  };
+function GlassFlower({ glassContainerAnimationDurations, isMobile, glassStartPosition }) {
 
   return (
     <>
       <motion.div
         className="h-[600px] md:h-[1000px] w-[400px] md:w-[800px] bg-[#122139]/50 backdrop-blur-[1px] rounded-t-full rounded-b-none absolute z-20 bottom-10 left-1/2 transform -translate-x-1/2"
-        initial={initialData}
+        initial={glassStartPosition}
         animate={{
           x: 0,
           y: 0,
