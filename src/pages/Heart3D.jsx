@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import PersonHeartModel from "../components/PersonHeartModel";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import LoadingScreen from "../components/ThreeJs/LoadingScreen";
+import SplitText from "../components/SplitText";
 
 function Heart3D() {
   const [clicked, setClicked] = useState(false);
@@ -31,24 +32,22 @@ function Heart3D() {
         )}
       </AnimatePresence>
       <AnimatePresence>
+        {/* clicked && loaded */}
         {clicked && loaded && (
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: 1,
-              transition: {
-                duration: 2,
-                delay: 5,
-              },
-            }}
-            exit={{ opacity: 0, transition: { duration: 0.5 } }}
-            className="text-gray-800 absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-love text-center leading-normal z-50 animate-pulse"
-            style={{ fontSize: isMobile ? "4vh" : "5vh" }}
-          >
-            Cada giro de este corazón
-            <br />
-            es un 'te quiero' para ti.
-          </motion.h1>
+          <>
+            <div
+              className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 font-love text-gray-800 text-center"
+              style={{ fontSize: isMobile ? "4vh" : "5vh" }}
+            >
+              <SplitText
+                texts={[
+                  ["Cada giro de este corazón", "es un 'te quiero' para ti."],
+                  ["Si quieres saber cuántas razones", "tengo para amarte, tendrás", "que contar mis latidos."]
+                ]}
+                delay={5}
+              />
+            </div>
+          </>
         )}
       </AnimatePresence>
       <PersonHeartModel clicked={clicked} setClicked={setClicked} />
