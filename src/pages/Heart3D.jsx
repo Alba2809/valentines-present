@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import PersonHeartModel from "../components/PersonHeartModel";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { heart as textsHeart } from "../data/texts.json";
+import PersonHeartModel from "../components/PersonHeartModel";
 import LoadingScreen from "../components/ThreeJs/LoadingScreen";
 import SplitText from "../components/SplitText";
 
@@ -40,10 +41,7 @@ function Heart3D() {
               style={{ fontSize: isMobile ? "4vh" : "5vh" }}
             >
               <SplitText
-                texts={[
-                  ["Cada giro de este corazón", "es un 'te quiero' para ti."],
-                  ["Si quieres saber cuántas razones", "tengo para amarte, tendrás", "que contar mis latidos."]
-                ]}
+                texts={textsHeart}
                 delay={5}
               />
             </div>
