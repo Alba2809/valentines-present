@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import Decorations from "../components/AuthPage/Decorations";
-import AnimatedFace from "../components/AnimatedFace";
+import AnimatedFace from "../components/AuthPage/AnimatedFace";
 import { passwords } from "../data/passwords.json";
 import MessageTimer from "../components/AuthPage/MessageTimer";
 import "../components/styles/Arrow.css";

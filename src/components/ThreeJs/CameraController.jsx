@@ -27,9 +27,9 @@ function CameraController({ position, target, duration }) {
   return (
     <OrbitControls
       ref={cameraRef}
-      enableZoom={false}
-      enableRotate={false}
-      enablePan={false}
+      // enableZoom={false}
+      // enableRotate={false}
+      // enablePan={false}
       target={[target.x, target.y, target.z]}
     />
   );

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { heart as textsHeart } from "../data/texts.json";
-import PersonHeartModel from "../components/PersonHeartModel";
+import PersonHeartModel from "../components/ThreeJs/HeartPage/PersonHeartModel";
 import LoadingScreen from "../components/ThreeJs/LoadingScreen";
 import SplitText from "../components/SplitText";
 

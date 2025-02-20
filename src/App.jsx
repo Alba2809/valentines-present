@@ -6,7 +6,7 @@ import Test from "./pages/Test";
 import Navigator from "./components/Navigator";
 import { FlowerAndCard, HeartModel, Home, TestPage } from "./data/paths.json";
 import Heart3D from "./pages/Heart3D";
-import AudioPlayer from "./components/AudioPlayer";
+import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 
 function App() {
   const location = useLocation();
@@ -15,7 +15,7 @@ function App() {
     <Routes location={location}>
       <Route element={<VerifyAuth />}>
         <Route path={Home} element={<Auth />} />
-        
+
         <Route element={<Navigator />}>
           <Route element={<AudioPlayer />}>
             <Route path={FlowerAndCard} element={<Flower />} />
@@ -23,11 +23,7 @@ function App() {
           </Route>
         </Route>
       </Route>
-      {/* <Route element={<Navigator />}>
-        <Route element={<AudioPlayer />}>
-          <Route path={Test} element={<Test />} />
-        </Route>
-      </Route> */}
+      <Route path={TestPage} element={<Test />} />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
