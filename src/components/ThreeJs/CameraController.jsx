@@ -3,7 +3,7 @@ import { useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-function CameraController({ position, target, duration }) {
+function CameraController({ position, target, duration = 2 }) {
   const { camera } = useThree();
   const cameraRef = useRef(null);
 
@@ -13,10 +13,17 @@ function CameraController({ position, target, duration }) {
         x: position.x,
         y: position.y,
         z: position.z,
-        duration: duration || 2,
+        duration: duration,
         onUpdate: () => camera.lookAt(target.x, target.y, target.z),
         ease: "expo.inOut",
       });
+      gsap.to(cameraRef.current.target, {
+        x: target.x,
+        y: target.y,
+        z: target.z,
+        duration: duration,
+        ease: "expo.inOut",
+      })
     }
   };
 

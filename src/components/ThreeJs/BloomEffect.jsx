@@ -2,7 +2,7 @@ import { Bloom, EffectComposer, ToneMapping } from "@react-three/postprocessing"
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-function BloomEffect({ clicked, duration, initialIntensity, finalIntensity }) {
+function BloomEffect({ clicked, duration = 2, initialIntensity, finalIntensity }) {
   const bloomRef = useRef();
 
   useEffect(() => {
@@ -10,7 +10,7 @@ function BloomEffect({ clicked, duration, initialIntensity, finalIntensity }) {
 
     gsap.to(bloomRef.current, {
       intensity: targetIntensity * 4,
-      duration: duration || 2,
+      duration: duration,
       ease: "power2.inOut",
     });
   }, [clicked]);

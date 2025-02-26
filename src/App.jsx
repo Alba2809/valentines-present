@@ -4,9 +4,10 @@ import Flower from "./pages/Flower";
 import VerifyAuth from "./pages/VerifyAuth";
 import Test from "./pages/Test";
 import Navigator from "./components/Navigator";
-import { FlowerAndCard, HeartModel, Home, TestPage } from "./data/paths.json";
+import { FlowerAndCard, HeartModel, UkeleleModel, Home, TestPage } from "./data/paths.json";
 import Heart3D from "./pages/Heart3D";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
+import Ukelele3D from "./pages/Ukelele3D";
 
 function App() {
   const location = useLocation();
@@ -21,6 +22,7 @@ function App() {
             <Route path={FlowerAndCard} element={<Flower />} />
             <Route path={HeartModel} element={<Heart3D />} />
           </Route>
+          <Route path={UkeleleModel} element={<Ukelele3D />} />
         </Route>
       </Route>
       <Route path={TestPage} element={<Test />} />
