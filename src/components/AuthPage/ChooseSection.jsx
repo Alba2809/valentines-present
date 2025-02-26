@@ -9,7 +9,6 @@ function ChooseSection() {
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
 
   const navigateTo = (path) => {
-    localStorage.setItem("completedFlowerChallenge", "true");
     navigate(path);
   };
 

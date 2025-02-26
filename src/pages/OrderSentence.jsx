@@ -1,15 +1,15 @@
 import { Fragment, useEffect, useState } from "react";
+import { passwords } from "../data/passwords.json";
+import { AnimatePresence, motion } from "motion/react";
 import Decorations from "../components/AuthPage/Decorations";
 import AnimatedFace from "../components/AuthPage/AnimatedFace";
-import { passwords } from "../data/passwords.json";
 import MessageTimer from "../components/AuthPage/MessageTimer";
-import "../components/styles/Arrow.css";
-import { AnimatePresence, motion } from "motion/react";
 import ThemeToggle from "../components/ThemeToggle";
 import ReorderWord from "../components/AuthPage/ReorderWord";
 import ChooseSection from "../components/AuthPage/ChooseSection";
+import "../components/styles/Arrow.css";
 
-function Auth() {
+function OrderSentence() {
   const [attempts, setAttempts] = useState(0);
   const [passwordOrdered, setPasswordOrdered] = useState(false);
   const [passwordData, setPasswordData] = useState(null);
@@ -110,4 +110,4 @@ function Auth() {
   );
 }
 
-export default Auth;
+export default OrderSentence;
