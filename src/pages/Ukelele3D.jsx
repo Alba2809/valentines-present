@@ -19,18 +19,23 @@ function Ukelele3D() {
   const [stringToPlay, setStringToPlay] = useState(null);
   const isMobile = useMediaQuery("only screen and (max-width: 768px)");
   const [stringAnimation, setStringAnimation] = useState(null);
+  const [sparklesAnimation, setSparklesAnimation] = useState(null);
 
   const handlePlayNote = (note) => {
     if (note !== notes.loaded && note !== notes.gift) {
       setStringToPlay(note);
       if(stringAnimation) stringAnimation(note);
+      if(sparklesAnimation) sparklesAnimation(note);
       return PlayUkeleleSound(note);
     }
   };
 
-  const passingAnimationFunction = (animationFunction) => {
-    if (animationFunction) {
-      setStringAnimation(() =>animationFunction)
+  const passingAnimationsFunction = (ukeleleAnimationFunction, sparklesAnimationFunction) => {
+    if (ukeleleAnimationFunction) {
+      setStringAnimation(() =>ukeleleAnimationFunction)
+    }
+    if (sparklesAnimationFunction) {
+      setSparklesAnimation(() =>sparklesAnimationFunction)
     }
   }
 
@@ -48,7 +53,7 @@ function Ukelele3D() {
       <UkeleleModel
         clicked={ukeleleClicked}
         setClicked={setUkeleleClicked}
-        passingAnimationFunction={passingAnimationFunction}
+        passingAnimationsFunction={passingAnimationsFunction}
       />
       <LoadingScreen setLoaded={setLoaded} />
     </div>

@@ -3,7 +3,7 @@ import { useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-function CameraController({ position, target, duration = 2 }) {
+function CameraController({ position, target, duration = 2, animate = true }) {
   const { camera } = useThree();
   const cameraRef = useRef(null);
 
@@ -28,7 +28,7 @@ function CameraController({ position, target, duration = 2 }) {
   };
 
   useEffect(() => {
-    cameraAnimate();
+    if(animate) cameraAnimate();
   }, [target, position]);
 
   return (

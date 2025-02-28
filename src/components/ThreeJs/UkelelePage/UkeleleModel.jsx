@@ -1,7 +1,8 @@
-import { Canvas } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
-import { useAnimations, useGLTF } from "@react-three/drei";
-import { LoopOnce } from "three";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Stars, useAnimations, useGLTF } from "@react-three/drei";
+import { AnimationMixer, LoopOnce } from "three";
+import BloomEffect from "../BloomEffect";
 import CameraController from "../CameraController";
 import UkeleleLights from "./UkeleleLights";
 
@@ -20,7 +21,7 @@ function UkeleleModel({
   height = "100vh",
   clicked = false,
   setClicked,
-  passingAnimationFunction
+  passingAnimationsFunction = () => {},
 }) {
   const [position, setPosition] = useState(positionsCamera.initial);
   const [targetCamera, setTargetCamera] = useState(targetsCamera.initial);
@@ -45,7 +46,19 @@ function UkeleleModel({
       />
 
       <UkeleleLights clicked={clicked} duration={4} />
-      <MainModel setClicked={setClicked} passingAnimationFunction={passingAnimationFunction} />
+      <MainModel
+        setClicked={setClicked}
+        passingAnimationFunction={passingAnimationsFunction}
+      />
+
+      <Stars count={5000} fade={true} color="#fff" opacity={0.5} saturation={10} />
+      <SparklesModel passingAnimationFunction={passingAnimationsFunction} />
+      <BloomEffect
+        clicked={true}
+        duration={4}
+        initialIntensity={0.3}
+        finalIntensity={0.3}
+      />
     </Canvas>
   );
 }
@@ -83,7 +96,7 @@ function MainModel({ setClicked, passingAnimationFunction = () => {} }) {
       ukeleleMoveAction.clampWhenFinished = true;
       ukeleleMoveAction.play();
 
-      ukeleleMoveAction.getMixer()
+      ukeleleMoveAction.getMixer();
     }
   };
 
@@ -117,9 +130,9 @@ function MainModel({ setClicked, passingAnimationFunction = () => {} }) {
       if (stringAction) {
         stringAction.reset().setLoop(LoopOnce).play();
       }
-    }
+    };
 
-    passingAnimationFunction(animation);
+    passingAnimationFunction(animation, null);
   }, [scene]);
 
   const notes = {
@@ -127,19 +140,7 @@ function MainModel({ setClicked, passingAnimationFunction = () => {} }) {
     c: "2",
     e: "3",
     g: "4",
-  }
-
-/*   useEffect(() => {
-    console.log("dentro")
-    if (stringToPlay) {
-      const stringNumber = notes[stringToPlay];
-      const stringAction = actions[`Vibration_${stringNumber}`];
-
-      if (stringAction) {
-        stringAction.reset().setLoop(LoopOnce).play();
-      }
-    }
-  }, [stringToPlay]); */
+  };
 
   // Manejar clics en el modelo
   const handlePointerDown = (event) => {
@@ -160,5 +161,47 @@ function MainModel({ setClicked, passingAnimationFunction = () => {} }) {
     </group>
   );
 }
+
+function SparklesModel({ passingAnimationFunction = () => {} }) {
+  const group = useRef();
+  const { scene, animations } = useGLTF("/model3d/SparkleAnimation.glb");
+  const { mixer } = useAnimations(animations, group);
+
+  const notesMap = useMemo(() => {
+    return {
+      a: scene.clone(),
+      c: scene.clone(),
+      e: scene.clone(),
+      g: scene.clone(),
+    };
+  }, [scene]);
+
+  useEffect(() => {
+    passingAnimationFunction(null, animation);
+  }, [scene]);
+
+  const animation = (note) => {
+    if (!notesMap[note]) return;
+
+    // console.log(`Reproduciendo animación para nota: ${note}`);
+
+    const target = notesMap[note];
+    const newAction = mixer.clipAction(animations[0], target);
+    newAction.reset().setLoop(LoopOnce).play();
+    newAction.clampWhenFinished = true;
+  };
+
+  return (
+    <group ref={group}>
+      {Object.values(notesMap).map((clone, index) => (
+        <primitive key={index} object={clone} />
+      ))}
+    </group>
+  );
+}
+
+//preload models
+useGLTF.preload("/model3d/Ukelele.glb");
+useGLTF.preload("/model3d/SparkleAnimation.glb");
 
 export default UkeleleModel;
