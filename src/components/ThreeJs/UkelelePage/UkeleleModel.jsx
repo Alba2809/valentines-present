@@ -6,23 +6,24 @@ import BloomEffect from "../BloomEffect";
 import CameraController from "../CameraController";
 import UkeleleLights from "./UkeleleLights";
 
-const positionsCamera = {
-  initial: { x: 80, y: 25, z: 100 },
-  afterUkeleleMove: { x: -10, y: 40, z: 22 },
-};
-
-const targetsCamera = {
-  initial: { x: -35, y: 25, z: 0 },
-  afterUkeleleMove: { x: -35, y: 16, z: 19 },
-};
-
 function UkeleleModel({
   width = "100vw",
   height = "100vh",
   clicked = false,
   setClicked,
   passingAnimationsFunction = () => {},
+  isMobile = false,
 }) {
+  const positionsCamera = {
+    initial: { x: 80, y: 25, z: 100 },
+    afterUkeleleMove: { x: -10, y: 40, z: 22 },
+  };
+
+  const targetsCamera = {
+    initial: { x: isMobile ? -10 : -35, y: isMobile ? 28 : 25, z: 0 },
+    afterUkeleleMove: { x: -35, y: 16, z: isMobile ? 20 : 19 },
+  };
+
   const [position, setPosition] = useState(positionsCamera.initial);
   const [targetCamera, setTargetCamera] = useState(targetsCamera.initial);
 
@@ -51,7 +52,13 @@ function UkeleleModel({
         passingAnimationFunction={passingAnimationsFunction}
       />
 
-      <Stars count={5000} fade={true} color="#fff" opacity={0.5} saturation={10} />
+      <Stars
+        count={5000}
+        fade={true}
+        color="#fff"
+        opacity={0.5}
+        saturation={10}
+      />
       <SparklesModel passingAnimationFunction={passingAnimationsFunction} />
       <BloomEffect
         clicked={true}

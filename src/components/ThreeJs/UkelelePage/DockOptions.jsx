@@ -17,8 +17,14 @@ function DockOptions({
     string4: "g",
     gift: "gift",
   },
-  handlePlayNote
+  handlePlayNote,
+  playingSong = false
 }) {
+  const onClick = (note) => {
+    if (playingSong) return;
+    handlePlayNote(note);
+  }
+
   return (
     <AnimatePresence>
       {showComponent && (
@@ -34,30 +40,30 @@ function DockOptions({
             iconDistance={100}
           >
             <DockIcon
-              className="bg-black/10"
-              onClick={() => handlePlayNote(notes.string1)}
+              className={`bg-black/10 ${playingSong && "cursor-not-allowed"}`}
+              onClick={() => onClick(notes.string1)}
             >
               <PiBird className="size-full text-green-200" />
             </DockIcon>
             <DockIcon
-              className="bg-black/10"
-              onClick={() => handlePlayNote(notes.string2)}
+              className={`bg-black/10 ${playingSong && "cursor-not-allowed"}`}
+              onClick={() => onClick(notes.string2)}
             >
               <PiSunDimFill className="size-full text-yellow-200" />
             </DockIcon>
             <DockIcon
-              className="bg-black/10"
-              onClick={() => handlePlayNote(notes.string3)}
+              className={`bg-black/10 ${playingSong && "cursor-not-allowed"}`}
+              onClick={() => onClick(notes.string3)}
             >
               <PiShootingStarFill className="size-full text-blue-200" />
             </DockIcon>
             <DockIcon
-              className="bg-black/10"
-              onClick={() => handlePlayNote(notes.string4)}
+              className={`bg-black/10 ${playingSong && "cursor-not-allowed"}`}
+              onClick={() => onClick(notes.string4)}
             >
               <PiMoonStarsFill className="size-full text-gray-100" />
             </DockIcon>
-            <DockIcon className="bg-black/10" onClick={() => handlePlayNote(notes.gift)}>
+            <DockIcon className={`bg-black/10 ${playingSong && "cursor-not-allowed"}`} onClick={() => onClick(notes.gift)}>
               <PiGiftFill className="size-full text-red-100" />
             </DockIcon>
           </Dock>

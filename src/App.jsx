@@ -29,7 +29,7 @@ function App() {
         <Route path={UkeleleModel} element={<Ukelele3D />} />
       </Route>
       
-      <Route path={TestPage} element={<Test />} />
+      {/* <Route path={TestPage} element={<Test />} /> */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
