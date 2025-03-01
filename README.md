@@ -157,3 +157,18 @@ Modelos base obtenidos de [SketchFab](https://sketchfab.com). Los modelos fueron
 
 - **Cuerpo base**: This work is based on ["Male base mesh"](https://sketchfab.com/3d-models/male-base-mesh-427fc72a505140abbd56451d692a3734) by [bhagath2005](https://sketchfab.com/bhagath2005) licensed under [CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/)
 - **Corazón**: This work is based on ["PUMPING HEART MODEL"](https://sketchfab.com/3d-models/pumping-heart-model-6f815b9822dc479eae0a17b8dcab9c75) by [omarelone](https://sketchfab.com/omarelone) licensed under [CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/)
+- **Ukelele**: This work is based on ["Ukelele"](https://sketchfab.com/3d-models/ukelele-e464bc415da6433abbcd184d86b9feb4) by [Mariana Suarez](https://sketchfab.com/MarianaSuarez) licensed under [CC-BY-4.0](http://creativecommons.org/licenses/by/4.0/)
+
+## Sonidos 🎵
+
+Sonidos obtenidos de [Freesound](https://freesound.org). Sonidos modificados para que se ajusten a lo deseado, desde el volumen y la duración.
+
+- **Ukelele a**: Ukulele-A-O by zhankster -- https://freesound.org/s/723349/ -- License: Creative Commons 0.
+- **Ukelele c**: Ukulele-C-O by zhankster -- https://freesound.org/s/723353/ -- License: Creative Commons 0.
+- **Ukelele e**: Ukulele-E-O by zhankster -- https://freesound.org/s/723355/ -- License: Creative Commons 0.
+- **Ukelele g**: Ukulele-G-O by zhankster -- https://freesound.org/s/723352/ -- License: Creative Commons 0.
+- **Ukelele Loaded**: Ukulele Old _ Chord _ Open C6 take2 NT5 L_12Fret R_Soundhole by Sadiquecat -- https://freesound.org/s/727219/ -- License: Creative Commons 0.
+
+## Licencia 📜
+
+Este proyecto está licenciado bajo la licencia MIT.
