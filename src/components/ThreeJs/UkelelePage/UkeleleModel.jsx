@@ -52,13 +52,13 @@ function UkeleleModel({
         passingAnimationFunction={passingAnimationsFunction}
       />
 
-      <Stars
+      {/* <Stars
         count={5000}
         fade={true}
         color="#fff"
         opacity={0.5}
         saturation={10}
-      />
+      /> */}
       <SparklesModel passingAnimationFunction={passingAnimationsFunction} />
       <BloomEffect
         clicked={true}
