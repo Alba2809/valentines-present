@@ -119,7 +119,7 @@ function Navigator() {
                     transition: { delay: 1.1, duration: 0.8 },
                   }}
                   exit={{ opacity: 0, transition: { delay: 0, duration: 0 } }}
-                  className="flex items-center gap-3 text-gray-300 hover:text-red-400 transition duration-300 cursor-pointer w-full"
+                  className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition duration-300 cursor-pointer w-full"
                   onClick={() => navigateTo(UkeleleModel)}
                 >
                   <FaGuitar className={isMobile ? "size-[25px]" : "size-[30px]"} />
