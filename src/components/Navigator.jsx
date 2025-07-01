@@ -4,9 +4,9 @@ import { CgMenuGridR } from "react-icons/cg";
 import { IoMdHome } from "react-icons/io";
 import { IoFlowerSharp, IoHeart } from "react-icons/io5";
 import { Outlet, useNavigate } from "react-router-dom";
-import { FlowerAndCard, HeartModel, UkeleleModel, Home } from "../data/paths.json";
+import { FlowerAndCard, HeartModel, UkeleleModel, Home, Birthday } from "../data/paths.json";
 import { useMediaQuery } from "@uidotdev/usehooks";
-import { FaGuitar } from "react-icons/fa";
+import { FaBirthdayCake, FaGuitar } from "react-icons/fa";
 
 function Navigator() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -125,6 +125,24 @@ function Navigator() {
                   <FaGuitar className={isMobile ? "size-[25px]" : "size-[30px]"} />
                   <p className="font-ephesis" style={{ fontSize: isMobile ? "1.7rem" : "2rem" }}>
                     Ukelele
+                  </p>
+                </motion.div>
+              )}
+              
+              {currentPath !== Birthday && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { delay: 1.1, duration: 0.8 },
+                  }}
+                  exit={{ opacity: 0, transition: { delay: 0, duration: 0 } }}
+                  className="flex items-center gap-3 text-gray-300 hover:text-[#ec9c4a] transition duration-300 cursor-pointer w-full"
+                  onClick={() => navigateTo(Birthday)}
+                >
+                  <FaBirthdayCake className={isMobile ? "size-[25px]" : "size-[30px]"} />
+                  <p className="font-ephesis" style={{ fontSize: isMobile ? "1.7rem" : "2rem" }}>
+                    Cumpleaños
                   </p>
                 </motion.div>
               )}
