@@ -1,0 +1,59 @@
+.firework {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* Generate 15 fireworks with random positions and animation delays */
+.firework-1 { top: 15%; left: 20%; animation: firework-md 1.2s infinite both; animation-delay: 0s; }
+.firework-2 { top: 25%; left: 60%; animation: firework-lg 1.2s infinite both; animation-delay: 0.2s; }
+.firework-3 { top: 35%; left: 30%; animation: firework-sm 1.2s infinite both; animation-delay: 0.4s; }
+.firework-4 { top: 20%; left: 75%; animation: firework-sm 1.2s infinite both; animation-delay: 0.1s; }
+.firework-5 { top: 28%; left: 45%; animation: firework-lg 1.2s infinite both; animation-delay: 0.3s; }
+.firework-6 { top: 18%; left: 10%; animation: firework-md 1.2s infinite both; animation-delay: 0.6s; }
+.firework-7 { top: 22%; left: 85%; animation: firework-md 1.2s infinite both; animation-delay: 0.7s; }
+.firework-8 { top: 30%; left: 25%; animation: firework-sm 1.2s infinite both; animation-delay: 0.5s; }
+.firework-9 { top: 12%; left: 50%; animation: firework-lg 1.2s infinite both; animation-delay: 0.4s; }
+.firework-10 { top: 16%; left: 65%; animation: firework-sm 1.2s infinite both; animation-delay: 0.8s; }
+.firework-11 { top: 27%; left: 15%; animation: firework-md 1.2s infinite both; animation-delay: 0.9s; }
+.firework-12 { top: 24%; left: 40%; animation: firework-sm 1.2s infinite both; animation-delay: 1s; }
+.firework-13 { top: 19%; left: 70%; animation: firework-lg 1.2s infinite both; animation-delay: 1.1s; }
+.firework-14 { top: 13%; left: 35%; animation: firework-md 1.2s infinite both; animation-delay: 0.6s; }
+.firework-15 { top: 30%; left: 80%; animation: firework-sm 1.2s infinite both; animation-delay: 1.2s; }
+
+/* Sparkle dots generator */
+@keyframes firework-sm {
+  0%, 100% { opacity: 0; }
+  10%, 70% { opacity: 1; }
+  100% {
+    box-shadow:
+      -0.5rem 0 0 #fff, 0.5rem 0 0 #fff,
+      0 -0.5rem 0 #fff, 0 0.5rem 0 #fff,
+      -0.35rem -0.35rem 0 #fff, 0.35rem 0.35rem 0 #fff,
+      -0.35rem 0.35rem 0 #fff, 0.35rem -0.35rem 0 #fff;
+  }
+}
+@keyframes firework-md {
+  0%, 100% { opacity: 0; }
+  10%, 70% { opacity: 1; }
+  100% {
+    box-shadow:
+      -0.7rem 0 0 #fff, 0.7rem 0 0 #fff,
+      0 -0.7rem 0 #fff, 0 0.7rem 0 #fff,
+      -0.5rem -0.5rem 0 #fff, 0.5rem 0.5rem 0 #fff,
+      -0.5rem 0.5rem 0 #fff, 0.5rem -0.5rem 0 #fff;
+  }
+}
+@keyframes firework-lg {
+  0%, 100% { opacity: 0; }
+  10%, 70% { opacity: 1; }
+  100% {
+    box-shadow:
+      -0.9rem 0 0 #fff, 0.9rem 0 0 #fff,
+      0 -0.9rem 0 #fff, 0 0.9rem 0 #fff,
+      -0.63rem -0.63rem 0 #fff, 0.63rem 0.63rem 0 #fff,
+      -0.63rem 0.63rem 0 #fff, 0.63rem -0.63rem 0 #fff;
+  }
+}

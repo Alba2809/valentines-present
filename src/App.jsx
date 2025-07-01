@@ -4,6 +4,7 @@ import {
   HeartModel,
   UkeleleModel,
   Home,
+  Birthday as BirthdayPath,
   TestPage,
 } from "./data/paths.json";
 import OrderSentence from "./pages/OrderSentence";
@@ -13,6 +14,7 @@ import Navigator from "./components/Navigator";
 import Heart3D from "./pages/Heart3D";
 import AudioPlayer from "./components/AudioPlayer/AudioPlayer";
 import Ukelele3D from "./pages/Ukelele3D";
+import Birthday from "./pages/Birthday";
 
 function App() {
   const location = useLocation();
@@ -25,6 +27,7 @@ function App() {
         <Route element={<AudioPlayer />}>
           <Route path={FlowerAndCard} element={<Flower />} />
           <Route path={HeartModel} element={<Heart3D />} />
+          <Route path={BirthdayPath} element={<Birthday />} />
         </Route>
         <Route path={UkeleleModel} element={<Ukelele3D />} />
       </Route>

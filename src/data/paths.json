@@ -3,5 +3,6 @@
   "FlowerAndCard": "/flower",
   "HeartModel": "/heart",
   "UkeleleModel": "/ukelele",
-  "TestPage": "/test"
+  "TestPage": "/test",
+  "Birthday": "/birthday"
 }
