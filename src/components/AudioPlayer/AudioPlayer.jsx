@@ -46,7 +46,7 @@ function AudioPlayer() {
   return (
     <>
       <motion.div
-        className={`fixed bg-[#1a2633]/40 backdrop-blur-sm z-[99] ${
+        className={`fixed bg-[#1a2633]/40 backdrop-blur-sm z-[250] ${
           isExpanded ? "shadow-2xl" : "shadow-lg"
         } ${isMobile && !isExpanded ? "rounded-full" : "rounded-lg"}`}
         initial={{
@@ -240,7 +240,7 @@ function AudioPlayer() {
       <AnimatePresence>
         {isExpanded && (
           <motion.div
-            className="absolute top-0 left-0 w-full h-full z-[60] bg-black/50 backdrop-blur-sm"
+            className="absolute top-0 left-0 w-full h-full z-[249] bg-black/50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

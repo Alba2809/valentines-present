@@ -24,7 +24,7 @@ function Navigator() {
   return (
     <>
       <motion.div
-        className={`fixed bg-[#1a2633]/40 backdrop-blur-sm z-[101] flex flex-col items-center justify-center p-2 gap-y-2 ${
+        className={`fixed bg-[#1a2633]/40 backdrop-blur-sm z-[300] flex flex-col items-center justify-center p-2 gap-y-2 ${
           isExpanded
             ? "shadow-2xl rounded-lg px-4 divide-y divide-gray-400"
             : "shadow-lg rounded-full cursor-pointer hover:bg-[#1a2633]/80 transition duration-400"
@@ -154,7 +154,7 @@ function Navigator() {
       <AnimatePresence>
         {isExpanded && (
           <motion.div
-            className="absolute top-0 left-0 w-full h-full z-[100] bg-black/50 backdrop-blur-sm"
+            className="absolute top-0 left-0 w-full h-full z-[299] bg-black/50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
